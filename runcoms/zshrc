@@ -51,3 +51,6 @@ zstyle ":completion:*:commands" rehash 1
 
 # Ignore completion functions for commands you don’t have
 zstyle ':completion:*:functions' ignored-patterns '_*'
+
+# Set tmux-powerbar info
+PROMPT="$PS1"'$([ -n "$TMUX"  ] && tmux setenv TMUXPWD_$(tmux display -p "#I_#P") "$PWD")'

@@ -6,19 +6,26 @@
 #
 
 #
+# xterm-256color
+#
+[[ $TERM == xterm* ]] && export TERM="xterm-256color"
+
+#
 # Browser
 #
 
 if [[ "$OSTYPE" == darwin* ]]; then
   export BROWSER='open'
+elif [[ "$OSTYPE" == linux* ]]; then
+  export BROWSER='xdg-open'
 fi
 
 #
 # Editors
 #
 
-export EDITOR='nano'
-export VISUAL='nano'
+export EDITOR='vim'
+export VISUAL='vim'
 export PAGER='less'
 
 #
@@ -42,6 +49,17 @@ export LESS='-F -g -i -M -R -S -w -X -z-4'
 if (( $+commands[lesspipe.sh] )); then
   export LESSOPEN='| /usr/bin/env lesspipe.sh %s 2>&-'
 fi
+
+#
+# Colorize man pages
+#
+export LESS_TERMCAP_mb=$'\E[01;31m'      # begin blinking
+export LESS_TERMCAP_md=$'\E[01;33m'      # begin bold
+export LESS_TERMCAP_me=$'\E[0m'          # end mode
+export LESS_TERMCAP_se=$'\E[0m'          # end standout-mode
+export LESS_TERMCAP_so=$'\E[01;44;33m'   # begin standout-mode - info box
+export LESS_TERMCAP_ue=$'\E[0m'          # end underline
+export LESS_TERMCAP_us=$'\E[01;34m'      # begin underline
 
 #
 # Paths
@@ -98,3 +116,25 @@ if [[ -d "$TMPDIR" ]]; then
   fi
 fi
 
+[[ -d ~/.gem/ruby/1.9.1/bin ]] && PATH=$HOME/.gem/ruby/1.9.1/bin:$PATH
+[[ -d $HOME/.rvm/bin ]] && export PATH=$HOME/.rvm/bin:$PATH # Add RVM to PATH for scripting
+[[ -d ~/bin ]] && export PATH=~/bin:$PATH
+
+export WINEARCH="win32"
+
+# No beeps
+setopt NO_BEEP
+
+setopt AUTO_PUSHD # Makes cd=pushd
+setopt AUTO_CD    # Automagically go to a directory, eg type $/etc and hit enter, zsh will chage to /etc
+
+# Enable command line comments
+setopt INTERACTIVE_COMMENTS
+
+# History options
+export HISTFILE=~/.zsh_history
+export HISTSIZE=50000
+export SAVEHIST=50000
+
+setopt HIST_REDUCE_BLANKS # Trim multiple insgnificant blanks
+setopt HIST_IGNORE_DUPS   # Remove duplicate of previous line

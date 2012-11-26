@@ -13,8 +13,27 @@ fi
 # Customize to your needs...
 
 # Aliases
+
+# Basic directory operations
+alias ...='cd ../..'
+alias -- -='cd -'
+
+# Super user
+alias _='sudo'
+
+#alias g='grep -in'
+
+# Show history
+alias history='fc -l 1'
+
+# List direcory contents
+alias lsa='ls -lah'
+alias l='ls -la'
+alias la='ls -a'
+alias ll='ls -l'
+alias sl=ls # often screw this up
+
 alias resource="source ~/.zshrc"
-alias zshconfig="vim ~/.zshrc"
 
 alias all_users="cut -d: -f1 < /etc/passwd | sort | xargs echo"
 alias all_groups="cut -d: -f1 < /etc/group | sort | xargs echo"

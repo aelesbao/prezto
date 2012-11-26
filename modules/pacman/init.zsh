@@ -37,16 +37,16 @@ fi
 alias pac='pacman'
 
 # Installs packages from repositories.
-alias paci='sudo pacman --sync'
+alias paci='pacman --sync'
 
 # Installs packages from files.
-alias pacI='sudo pacman --upgrade'
+alias pacI='pacman --upgrade'
 
 # Removes packages and unneeded dependencies.
-alias pacx='sudo pacman --remove'
+alias pacx='pacman --remove'
 
 # Removes packages, their configuration, and unneeded dependencies.
-alias pacX='sudo pacman --remove --nosave --recursive'
+alias pacX='pacman --remove --nosave --recursive'
 
 # Displays information about a package from the repositories.
 alias pacq='pacman --sync --info'
@@ -61,22 +61,22 @@ alias pacs='pacman --sync --search'
 alias pacS='pacman --query --search'
 
 # Lists orphan packages.
-alias pacman-list-orphans='sudo pacman --query --deps --unrequired'
+alias pacman-list-orphans='pacman --query --deps --unrequired'
 
 # Removes orphan packages.
-alias pacman-remove-orphans='sudo pacman --remove --recursive $(pacman --quiet --query --deps --unrequired)'
+alias pacman-remove-orphans='pacman --remove --recursive $(pacman --quiet --query --deps --unrequired)'
 
 # Synchronizes the local package and Arch Build System databases against the
 # repositories.
 if (( $+commands[abs] )); then
-  alias pacu='sudo pacman --sync --refresh && sudo abs'
+  alias pacu='pacman --sync --refresh && sudo abs'
 else
-  alias pacu='sudo pacman --sync --refresh'
+  alias pacu='pacman --sync --refresh'
 fi
 
 # Synchronizes the local package database against the repositories then
 # upgrades outdated packages.
-alias pacU='sudo pacman --sync --refresh --sysupgrade'
+alias pacU='pacman --sync --refresh --sysupgrade'
 
 unset _pacman_frontend
 

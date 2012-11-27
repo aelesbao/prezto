@@ -32,6 +32,7 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
+  'command-not-found' \
   'tmux' \
   'archive' \
   'pacman' \

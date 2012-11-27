@@ -54,6 +54,12 @@ alias pacq='pacman --sync --info'
 # Displays information about a package from the local database.
 alias pacQ='pacman --query --info'
 
+# List the contents of the queried package
+alias pacL='pacman --query --list'
+
+# Query the package that owns <file>
+alias pacO='pacman --query --owns'
+
 # Searches for packages in the repositories.
 alias pacs='pacman --sync --search'
 

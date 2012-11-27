@@ -60,3 +60,7 @@ zstyle ":completion:*:commands" rehash 1
 
 # Set tmux-powerbar info
 PROMPT="$PS1"'$([ -n "$TMUX"  ] && tmux setenv TMUXPWD_$(tmux display -p "#I_#P") "$PWD")'
+
+# Added PATH exports here temporaly
+[[ -d "$HOME/.gem/ruby/1.9.1/bin" ]] && export PATH="$HOME/.gem/ruby/1.9.1/bin:$PATH"
+[[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH"

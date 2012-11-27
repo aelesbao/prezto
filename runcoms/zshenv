@@ -116,10 +116,6 @@ if [[ -d "$TMPDIR" ]]; then
   fi
 fi
 
-[[ -d ~/.gem/ruby/1.9.1/bin ]] && PATH=$HOME/.gem/ruby/1.9.1/bin:$PATH
-[[ -d $HOME/.rvm/bin ]] && export PATH=$HOME/.rvm/bin:$PATH # Add RVM to PATH for scripting
-[[ -d ~/bin ]] && export PATH=~/bin:$PATH
-
 export WINEARCH="win32"
 
 # No beeps

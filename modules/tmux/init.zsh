@@ -33,7 +33,7 @@ if [[ -z "$TMUX" ]] && zstyle -t ':prezto:module:tmux' auto-start; then
     tmux set-option -g destroy-unattached on &> /dev/null
   fi
 
-  exec tmux new-session -t "$tmux_session"
+  exec tmux attach-session -t "$tmux_session"
 fi
 
 #

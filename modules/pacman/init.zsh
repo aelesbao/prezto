@@ -37,52 +37,52 @@ fi
 alias pac='pacman'
 
 # Installs packages from repositories.
-alias paci='pacman --sync'
+alias paci='pacman -S'
 
 # Installs packages from files.
-alias pacI='pacman --upgrade'
+alias pacI='pacman -U'
 
 # Removes packages and unneeded dependencies.
-alias pacx='pacman --remove'
+alias pacx='pacman -R'
 
 # Removes packages, their configuration, and unneeded dependencies.
-alias pacX='pacman --remove --nosave --recursive'
+alias pacX='pacman -Rns'
 
 # Displays information about a package from the repositories.
-alias pacq='pacman --sync --info'
+alias pacq='pacman -Si'
 
 # Displays information about a package from the local database.
-alias pacQ='pacman --query --info'
+alias pacQ='pacman -Qi'
 
 # List the contents of the queried package
-alias pacL='pacman --query --list'
+alias pacL='pacman -Ql'
 
 # Query the package that owns <file>
-alias pacO='pacman --query --owns'
+alias pacO='pacman -Qo'
 
 # Searches for packages in the repositories.
-alias pacs='pacman --sync --search'
+alias pacs='pacman -Ss'
 
 # Searches for packages in the local database.
-alias pacS='pacman --query --search'
+alias pacS='pacman -Qs'
 
 # Lists orphan packages.
-alias pacman-list-orphans='pacman --query --deps --unrequired'
+alias pacman-list-orphans='pacman -Qdt'
 
 # Removes orphan packages.
-alias pacman-remove-orphans='pacman --remove --recursive $(pacman --quiet --query --deps --unrequired)'
+alias pacman-remove-orphans='pacman -Rs $(pacman --quiet -Q --deps --unrequired)'
 
 # Synchronizes the local package and Arch Build System databases against the
 # repositories.
 if (( $+commands[abs] )); then
-  alias pacu='pacman --sync --refresh && sudo abs'
+  alias pacu='pacman -Sy && sudo abs'
 else
-  alias pacu='pacman --sync --refresh'
+  alias pacu='pacman -Sy'
 fi
 
 # Synchronizes the local package database against the repositories then
 # upgrades outdated packages.
-alias pacU='pacman --sync --refresh --sysupgrade'
+alias pacU='pacman -Syu'
 
 unset _pacman_frontend
 

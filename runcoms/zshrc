@@ -13,51 +13,9 @@ fi
 # Customize to your needs...
 
 # Aliases
-
-# Basic directory operations
-alias ...='cd ../..'
-alias -- -='cd -'
-
-# Super user
-alias _='sudo'
-
-# Show history
-alias history='fc -l 1'
-
-# List direcory contents
-alias lsa='ls -lah'
-alias l='ls -la'
-alias la='ls -a'
-alias ll='ls -l'
-alias sl=ls # often screw this up
-
 alias resource="source ~/.zshrc"
-
-alias all_users="cut -d: -f1 < /etc/passwd | sort | xargs echo"
-alias all_groups="cut -d: -f1 < /etc/group | sort | xargs echo"
-
-alias psc="ps xawf -eo pid,user,cgroup,args"
-alias del="mv -t ~/.local/share/Trash/files"
-
 alias pjson="python -m json.tool"
-
 alias etckeeper="sudo etckeeper"
-
-# Enable remembering of recent directories
-autoload -Uz chpwd_recent_dirs cdr
-add-zsh-hook chpwd chpwd_recent_dirs
-
-zstyle ':chpwd:*' recent-dirs-max 10
-zstyle ':completion:*:*:cdr:*:*' menu selection
-
-# cd does not select parent dir
-zstyle ':completion:*:cd:*' ignore-parents parent pwd
-
-# Force update of executables for autocomplete
-zstyle ":completion:*:commands" rehash 1
-
-# Set tmux-powerbar info
-PROMPT="$PS1"'$([ -n "$TMUX"  ] && tmux setenv TMUXPWD_$(tmux display -p "#I_#P") "$PWD")'
 
 # Added PATH exports here temporaly
 [[ -d "$HOME/.gem/ruby/1.9.1/bin" ]] && export PATH="$HOME/.gem/ruby/1.9.1/bin:$PATH"

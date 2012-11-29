@@ -17,3 +17,5 @@ fi
 # Manages .pac* files.
 alias pacc='yaourt -C'
 
+# Get PKGBUILD file
+alias pacg='yaourt -G'

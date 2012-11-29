@@ -21,8 +21,6 @@ autoload -Uz compinit && compinit -i
 # Options
 #
 
-setopt COMPLETE_ALIASES    # Aliases are not substituted before completion is attempted.
-setopt COMPLETE_IN_WORD    # Complete from both ends of a word.
 setopt ALWAYS_TO_END       # Move cursor to the end of a completed word.
 setopt PATH_DIRS           # Perform path search even on command names with slashes.
 setopt AUTO_MENU           # Show completion menu on a succesive tab press.

@@ -58,6 +58,9 @@ alias pu='pushd'
 alias rm="${aliases[rm]:-rm} -i"
 alias type='type -a'
 
+alias all_users="cut -d: -f1 < /etc/passwd | sort | xargs echo"
+alias all_groups="cut -d: -f1 < /etc/group | sort | xargs echo"
+
 # ls
 if is-callable 'dircolors'; then
   # GNU Core Utilities
@@ -178,3 +181,4 @@ function psu {
   ps -U "${1:-$USER}" -o 'pid,%cpu,%mem,command' "${(@)argv[2,-1]}"
 }
 
+alias psc="ps xawf -eo pid,user,cgroup,args"

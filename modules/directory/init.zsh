@@ -22,6 +22,13 @@ setopt EXTENDED_GLOB        # Use extended globbing syntax.
 unsetopt CLOBBER            # Do not overwrite existing files with > and >>.
                             # Use >! and >>! to bypass.
 
+# Enable remembering of recent directories
+autoload -Uz chpwd_recent_dirs cdr
+add-zsh-hook chpwd chpwd_recent_dirs
+
+zstyle ':chpwd:*' recent-dirs-max 10
+zstyle ':completion:*:*:cdr:*:*' menu selection
+
 #
 # Aliases
 #

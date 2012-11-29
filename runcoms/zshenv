@@ -43,23 +43,12 @@ fi
 # Set the default Less options.
 # Mouse-wheel scrolling has been disabled by -X (disable screen clearing).
 # Remove -X and -F (exit if the content fits on one screen) to enable it.
-export LESS='-F -g -i -M -R -S -w -X -z-4'
+export LESS='-c -g -i -M -R -w -z-4'
 
 # Set the Less input preprocessor.
 if (( $+commands[lesspipe.sh] )); then
   export LESSOPEN='| /usr/bin/env lesspipe.sh %s 2>&-'
 fi
-
-#
-# Colorize man pages
-#
-export LESS_TERMCAP_mb=$'\E[01;31m'      # begin blinking
-export LESS_TERMCAP_md=$'\E[01;33m'      # begin bold
-export LESS_TERMCAP_me=$'\E[0m'          # end mode
-export LESS_TERMCAP_se=$'\E[0m'          # end standout-mode
-export LESS_TERMCAP_so=$'\E[01;44;33m'   # begin standout-mode - info box
-export LESS_TERMCAP_ue=$'\E[0m'          # end underline
-export LESS_TERMCAP_us=$'\E[01;34m'      # begin underline
 
 #
 # Paths

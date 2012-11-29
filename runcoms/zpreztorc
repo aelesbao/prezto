@@ -44,6 +44,16 @@ zstyle ':prezto:load' pmodule \
   'prompt'
 
 #
+# Environment
+#
+
+# Enable grep colors
+zstyle ':prezto:environment:grep' color 'on'
+
+# Enable less termcap colors
+zstyle ':prezto:environment:termcap' color 'on'
+
+#
 # Editor
 #
 

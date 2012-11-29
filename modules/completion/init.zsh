@@ -84,7 +84,7 @@ zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
 
 # Directories
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*:*:cd:*' tag-order local-directories directory-stack path-directories
+zstyle ':completion:*:*:cd:*' tag-order local-directories directory-stack path-directories ignore-parents parent pwd
 zstyle ':completion:*:*:cd:*:directory-stack' menu yes select
 zstyle ':completion:*:-tilde-:*' group-order 'named-directories' 'path-directories' 'users' 'expand'
 zstyle ':completion:*' squeeze-slashes true

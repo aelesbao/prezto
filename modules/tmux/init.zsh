@@ -36,6 +36,10 @@ if [[ -z "$TMUX" ]] && zstyle -t ':prezto:module:tmux' auto-start; then
   exec tmux attach-session -t "$tmux_session"
 fi
 
+if [[ -n "$TMUX" ]] && zstyle -t ':prezto:module:tmux:powerbar' update-pwd; then
+  add-zsh-hook zsh_directory_name tmux-powerbar-pwd
+fi
+
 #
 # Aliases
 #

@@ -76,6 +76,9 @@ zstyle -e ':completion:*:approximate:*' max-errors 'reply=($((($#PREFIX+$#SUFFIX
 # Don't complete unavailable commands.
 zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec))'
 
+# Force update of executables for autocomplete
+zstyle ':completion:*:commands' rehash 1
+
 # Array completion element sorting.
 zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
 

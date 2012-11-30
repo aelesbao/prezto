@@ -105,7 +105,5 @@ if [[ -d "$TMPDIR" ]]; then
   fi
 fi
 
-export WINEARCH="win32"
-
 # No beeps
 setopt NO_BEEP

@@ -11,11 +11,15 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+#
+setopt HIST_IGNORE_SPACE # history ignores lines starting with white spaces
 
 # Aliases
 alias resource="source ~/.zshrc"
 alias pjson="python -m json.tool"
 alias etckeeper="sudo etckeeper"
+
+alias pwsafe=" pwsafe"
 
 # Added PATH exports here temporaly
 [[ -d "$HOME/.gem/ruby/1.9.1/bin" ]] && export PATH="$HOME/.gem/ruby/1.9.1/bin:$PATH"

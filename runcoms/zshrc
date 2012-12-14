@@ -21,6 +21,8 @@ alias etckeeper="sudo etckeeper"
 
 alias pwsafe=" pwsafe"
 
+alias cap='bundle exec cap'
+
 # Added PATH exports here temporaly
 [[ -d "$HOME/.gem/ruby/1.9.1/bin" ]] && export PATH="$HOME/.gem/ruby/1.9.1/bin:$PATH"
 [[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH"

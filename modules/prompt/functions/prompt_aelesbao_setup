@@ -1,0 +1,115 @@
+#
+# My custom theme ported from oh-my-zsh. Based on 'minimal'.
+#
+# Authors:
+#   Augusto Rocha Elesbão <aelesbao@gmail.com>
+#
+# Screenshots:
+#   TODO
+#
+
+local vcs_repository_color='%%B%F{blue}'
+local vcs_guard_color='%%b%F{white}'
+local vcs_branch_color='%%b%f'
+local vcs_action_color='%F{white}'
+local vcs_staged_color='%F{green}'
+local vcs_deleted_color='%F{red}'
+local vcs_untracked_color='%F{red}'
+local vcs_modified_color='%F{yellow}'
+local vcs_stashed_color='%%B%F{magenta}'
+local vcs_unmerged_color='%%B%F{yellow}'
+local vcs_upstream_color='%F{magenta}'
+
+function +vi-set-vcs-icon() {
+  case "$vcs" in
+    "git") hook_com[vcs]="±" ;;
+    "svn") hook_com[vcs]="⚡" ;;
+    "hg") hook_com[vcs]="☿" ;;
+  esac
+}
+
+function +vi-git-prompt-info() {
+  # Get Git repository information.
+  if (( $+functions[git-info] )); then
+    git-info
+  fi
+
+  hook_com[misc]="${git_info[misc]}"
+}
+
+# show the differences between HEAD and its upstream.
+function git-upstream-info() {
+  # find how many commits we are ahead/behind our upstream
+  local count=$(git rev-list --count --left-right @{upstream}...HEAD 2> /dev/null)
+  case "$count" in
+    "") # no upstream
+      ;;
+    "0	0") # equal to upstream
+      ;;
+    "0	"*) # ahead of upstream
+      ;;
+    *"	0") # behind upstream
+      ;;
+    *) # diverged from upstream
+      ;;
+  esac
+}
+
+function prompt_aelesbao_precmd {
+  vcs_info
+}
+
+function prompt_aelesbao_setup {
+  setopt LOCAL_OPTIONS
+  unsetopt XTRACE KSH_ARRAYS
+  prompt_opts=(cr percent subst)
+
+  # Load required functions.
+  autoload -Uz add-zsh-hook
+  autoload -Uz vcs_info
+
+  # Add hook for calling vcs_info before each command.
+  add-zsh-hook precmd prompt_aelesbao_precmd
+
+  zstyle ':prezto:module:editor:info:completing' format ''
+
+  # Setup git module parameters.
+  zstyle ':prezto:module:git:info:added'     format "${vcs_staged_color}•%f%%b"
+  zstyle ':prezto:module:git:info:ahead'     format "${vcs_upstream_color}↑%f%%b"
+  zstyle ':prezto:module:git:info:behind'    format "${vcs_upstream_color}↓%f%%b"
+  zstyle ':prezto:module:git:info:deleted'   format "${vcs_deleted_color}×%f%%b"
+  zstyle ':prezto:module:git:info:diverged'  format "${vcs_upstream_color}↕%f%%b"
+  zstyle ':prezto:module:git:info:modified'  format "${vcs_modified_color}•%f%%b"
+  zstyle ':prezto:module:git:info:renamed'   format "${vcs_staged_color}→%f%%b"
+  zstyle ':prezto:module:git:info:stashed'   format "${vcs_stashed_color}↯%f%%b"
+  zstyle ':prezto:module:git:info:unmerged'  format "${vcs_unmerged_color}⇄%f%%b"
+  zstyle ':prezto:module:git:info:untracked' format "${vcs_untracked_color}•%f%%b"
+
+  zstyle ':prezto:module:git:info:keys'      format 'misc' '%m%D%a%r%d%u%U%A%B%S'
+
+  # Set vcs_info parameters.
+  zstyle ':vcs_info:*'     enable git hg bzr svn
+  zstyle ':vcs_info:git:*' check-for-changes false
+
+  local msg_0_format="%{$vcs_repository_color%}%r"
+  local msg_2_format=" %{$vcs_guard_color%}%s %{$vcs_branch_color%}%b%m%%b%f"
+
+  zstyle ':vcs_info:*' formats       "$msg_0_format" "%%b%f/%S" "$msg_2_format"
+  zstyle ':vcs_info:*' actionformats "$msg_0_format" "%%b%f/%S" "$msg_2_format:${vcs_action_color}%a%%b%f"
+
+  zstyle ':vcs_info:*' max-exports   3
+
+  zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat "%b${vcs_action_color}:%r"
+
+  zstyle ':vcs_info:*+post-backend:*'  hooks set-vcs-icon
+  zstyle ':vcs_info:git+set-message:*' hooks git-prompt-info
+
+  zstyle ':vcs_info:*' debug false
+
+  # Define prompts.
+  PROMPT='%b%f${vcs_info_msg_0_:-%3~}${vcs_info_msg_1_%%/.}${vcs_info_msg_2_} %(!.%F{red}.)» '
+  PROMPT2='%b%F{red}⁝ %f'
+}
+
+prompt_aelesbao_setup "$@"
+

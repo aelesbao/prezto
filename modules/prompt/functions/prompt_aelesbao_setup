@@ -37,9 +37,12 @@ function +vi-git-prompt-info() {
   hook_com[misc]="${git_info[misc]}"
 }
 
+function prompt_aelesbao_pwd {
+  prompt_aelesbao_pwd='%3~'
 }
 
 function prompt_aelesbao_precmd {
+  prompt_aelesbao_pwd
   vcs_info
 }
 

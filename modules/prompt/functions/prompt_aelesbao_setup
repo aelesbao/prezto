@@ -81,8 +81,8 @@ function prompt_aelesbao_setup {
   local msg_0_format="%{$vcs_repository_color%}%r"
   local msg_2_format=" %{$vcs_guard_color%}%s %{$vcs_branch_color%}%b%m%%b%f"
 
-  zstyle ':vcs_info:*' formats       "$msg_0_format" "%%b%f/%S" "$msg_2_format"
-  zstyle ':vcs_info:*' actionformats "$msg_0_format" "%%b%f/%S" "$msg_2_format:${vcs_action_color}%a%%b%f"
+  zstyle ':vcs_info:*' formats       "$msg_0_format" "%%b%f:%S" "$msg_2_format"
+  zstyle ':vcs_info:*' actionformats "$msg_0_format" "%%b%f:%S" "$msg_2_format:${vcs_action_color}%a%%b%f"
 
   zstyle ':vcs_info:*' max-exports   3
 
@@ -94,7 +94,7 @@ function prompt_aelesbao_setup {
   zstyle ':vcs_info:*' debug false
 
   # Define prompts.
-  PROMPT='%b%f${vcs_info_msg_0_:-%3~}${vcs_info_msg_1_%%/.}${vcs_info_msg_2_} %(!.%F{red}.)» '
+  PROMPT='%b%f${vcs_info_msg_0_:-${_prompt_aelesbao_pwd}}${vcs_info_msg_1_%:.}${vcs_info_msg_2_} %(!.%F{red}.)» '
   PROMPT2='%b%F{red}⁝ %f'
 }
 

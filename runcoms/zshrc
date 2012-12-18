@@ -21,6 +21,8 @@ alias etckeeper="sudo etckeeper"
 
 alias pwsafe=" pwsafe"
 
+alias cdgr='cd $(git-root)'
+
 alias cap='bundle exec cap'
 
 # Added PATH exports here temporaly

@@ -8,18 +8,6 @@
 #   TODO
 #
 
-local vcs_repository_color='%%B%F{blue}'
-local vcs_guard_color='%F{white}'
-local vcs_branch_color='%%b%f'
-local vcs_action_color='%F{white}'
-local vcs_staged_color='%F{green}'
-local vcs_deleted_color='%F{red}'
-local vcs_untracked_color='%F{red}'
-local vcs_modified_color='%F{yellow}'
-local vcs_stashed_color='%F{cyan}'
-local vcs_unmerged_color='%F{red}'
-local vcs_upstream_color='%F{magenta}'
-
 function +vi-set-vcs-icon() {
   case "$vcs" in
     "git") hook_com[vcs]="±" ;;
@@ -47,6 +35,18 @@ function prompt_aelesbao_precmd {
 }
 
 function prompt_aelesbao_setup {
+  local vcs_repository_color='%%B%F{blue}'
+  local vcs_guard_color='%F{white}'
+  local vcs_branch_color='%%b%f'
+  local vcs_action_color='%F{white}'
+  local vcs_staged_color='%F{green}'
+  local vcs_deleted_color='%F{red}'
+  local vcs_untracked_color='%F{red}'
+  local vcs_modified_color='%F{yellow}'
+  local vcs_stashed_color='%F{cyan}'
+  local vcs_unmerged_color='%F{red}'
+  local vcs_upstream_color='%F{magenta}'
+
   setopt LOCAL_OPTIONS
   unsetopt XTRACE KSH_ARRAYS
   prompt_opts=(cr percent subst)
@@ -65,7 +65,6 @@ function prompt_aelesbao_setup {
   zstyle ':prezto:module:git:info:ahead'     format "${vcs_upstream_color}↑%f%%b"
   zstyle ':prezto:module:git:info:behind'    format "${vcs_upstream_color}↓%f%%b"
   zstyle ':prezto:module:git:info:deleted'   format "${vcs_deleted_color}×%f%%b"
-  zstyle ':prezto:module:git:info:diverged'  format "${vcs_upstream_color}↕%f%%b"
   zstyle ':prezto:module:git:info:modified'  format "${vcs_modified_color}•%f%%b"
   zstyle ':prezto:module:git:info:renamed'   format "${vcs_staged_color}→%f%%b"
   zstyle ':prezto:module:git:info:stashed'   format "${vcs_stashed_color}↯%f%%b"

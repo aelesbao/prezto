@@ -9,15 +9,15 @@
 #
 
 local vcs_repository_color='%%B%F{blue}'
-local vcs_guard_color='%%b%F{white}'
+local vcs_guard_color='%F{white}'
 local vcs_branch_color='%%b%f'
 local vcs_action_color='%F{white}'
 local vcs_staged_color='%F{green}'
 local vcs_deleted_color='%F{red}'
 local vcs_untracked_color='%F{red}'
 local vcs_modified_color='%F{yellow}'
-local vcs_stashed_color='%%B%F{magenta}'
-local vcs_unmerged_color='%%B%F{yellow}'
+local vcs_stashed_color='%F{cyan}'
+local vcs_unmerged_color='%F{red}'
 local vcs_upstream_color='%F{magenta}'
 
 function +vi-set-vcs-icon() {

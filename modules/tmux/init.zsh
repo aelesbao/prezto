@@ -36,8 +36,14 @@ if [[ -z "$TMUX" ]] && zstyle -t ':prezto:module:tmux' auto-start; then
   exec tmux attach-session -t "$tmux_session"
 fi
 
-if [[ -n "$TMUX" ]] && zstyle -t ':prezto:module:tmux:powerbar' update-pwd; then
-  add-zsh-hook zsh_directory_name tmux-powerbar-pwd
+if [[ -n "$TMUX" ]]; then
+  if zstyle -t ':prezto:module:tmux' smart-window-rename; then
+    smart_window_rename_setup
+  fi
+
+  if zstyle -t ':prezto:module:tmux:powerbar' update-pwd; then
+    add-zsh-hook precmd tmux_powerbar_pwd
+  fi
 fi
 
 #

@@ -16,7 +16,7 @@ fi
 #
 
 if [[ -z "$TMUX" ]] && zstyle -t ':prezto:module:tmux' auto-start; then
-  tmux_session='prezto'
+  tmux_session='default'
 
   if ! tmux has-session -t "$tmux_session" 2> /dev/null; then
     # Disable the destruction of unattached sessions globally.

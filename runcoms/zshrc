@@ -25,6 +25,9 @@ alias cdgr='cd $(git-root)'
 
 alias cap='bundle exec cap'
 
+# Solarized dir_colors
+[[ -f /etc/dir_colors ]] && eval `dircolors /etc/dir_colors`
+
 # Added PATH exports here temporaly
 [[ -d "$HOME/.gem/ruby/1.9.1/bin" ]] && export PATH="$HOME/.gem/ruby/1.9.1/bin:$PATH"
 [[ -d "$HOME/.rvm/bin" ]] && export PATH="$PATH:$HOME/.rvm/bin"

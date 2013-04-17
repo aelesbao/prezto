@@ -1,8 +1,0 @@
-#
-# Set tmux-powerbar current directory.
-#
-# Authors:
-#   Augusto Elesbão <aelesbao@gmail.com>
-#
-
-tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD"

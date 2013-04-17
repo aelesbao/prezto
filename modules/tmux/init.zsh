@@ -27,8 +27,8 @@ if [[ -z "$TMUX" ]] && zstyle -t ':prezto:module:tmux' auto-start; then
 fi
 
 if [[ -n "$TMUX" ]]; then
-  if zstyle -t ':prezto:module:tmux:powerbar' update-pwd; then
-    add-zsh-hook precmd tmux_powerbar_pwd
+  if zstyle -t ':prezto:module:tmux' powerline; then
+    tmux-powerline
   fi
 fi
 

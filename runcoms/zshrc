@@ -34,3 +34,5 @@ alias cap='bundle exec cap'
 [[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH"
 
 [[ -s "$HOME/.tmuxinator/scripts/tmuxinator" ]] && source $HOME/.tmuxinator/scripts/tmuxinator
+
+export PATH="./bin:$PATH"

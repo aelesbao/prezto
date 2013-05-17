@@ -14,6 +14,10 @@ fi
 #
 setopt HIST_IGNORE_SPACE # history ignores lines starting with white spaces
 
+# Use CTRL+arrows to move backward and forward words
+bindkey ';5D' emacs-backward-word
+bindkey ';5C' emacs-forward-word
+
 # Aliases
 alias resource="source ~/.zshrc"
 alias pjson="python -m json.tool"

@@ -58,6 +58,7 @@ function prompt_aelesbao_setup {
   # Add hook for calling vcs_info before each command.
   add-zsh-hook precmd prompt_aelesbao_precmd
 
+  zstyle ':prezto:module:git:info' verbose 'yes'
   zstyle ':prezto:module:editor:info:completing' format ''
 
   # Setup git module parameters.

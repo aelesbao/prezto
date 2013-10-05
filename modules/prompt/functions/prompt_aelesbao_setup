@@ -95,8 +95,8 @@ function prompt_aelesbao_setup {
   zstyle ':vcs_info:*' debug false
 
   # Define prompts.
-  PROMPT='%b%f${vcs_info_msg_0_:-${_prompt_aelesbao_pwd}}${vcs_info_msg_1_%:.}${vcs_info_msg_2_} %(!.%F{red}.%f)🌀 %f'
-  PROMPT2='%b%F{white}%_ (!.%F{red}.%f)🌀 %f🌀 '
+  PROMPT='%b%f${vcs_info_msg_0_:-${_prompt_aelesbao_pwd}}${vcs_info_msg_1_%:.}${vcs_info_msg_2_} %(!.%F{red}.%f)# %f '
+  PROMPT2='%b%F{white}%_ (!.%F{red}.%f)# %f# '
 }
 
 prompt_aelesbao_setup "$@"

@@ -39,4 +39,9 @@ alias cap='bundle exec cap'
 
 [[ -s "$HOME/.tmuxinator/scripts/tmuxinator" ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
+if [[ -d "$HOME/Applications/android-sdk-macosx" ]]; then
+  export PATH="$PATH:$HOME/Applications/android-sdk-macosx/tools"
+  export PATH="$PATH:$HOME/Applications/android-sdk-macosx/platform-tools"
+fi
+
 export PATH="./bin:$PATH"

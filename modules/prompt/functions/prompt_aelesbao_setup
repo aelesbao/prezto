@@ -32,6 +32,7 @@ function prompt_aelesbao_pwd {
 function prompt_aelesbao_precmd {
   prompt_aelesbao_pwd
   vcs_info
+  python-info
 }
 
 function prompt_aelesbao_setup {
@@ -46,6 +47,7 @@ function prompt_aelesbao_setup {
   local vcs_stashed_color='%F{cyan}'
   local vcs_unmerged_color='%F{red}'
   local vcs_upstream_color='%F{magenta}'
+  local dev_env_color='%%B%F{red}'
 
   setopt LOCAL_OPTIONS
   unsetopt XTRACE KSH_ARRAYS
@@ -74,6 +76,9 @@ function prompt_aelesbao_setup {
 
   zstyle ':prezto:module:git:info:keys'      format 'misc' '%m%D%a%r%d%u%U%A%B%S'
 
+  # %v - virtualenv name.
+  zstyle ':prezto:module:python:info:virtualenv' format '${dev_env_color}@%v'
+
   # Set vcs_info parameters.
   zstyle ':vcs_info:*'     enable git hg bzr svn
   zstyle ':vcs_info:git:*' check-for-changes false
@@ -94,9 +99,11 @@ function prompt_aelesbao_setup {
 
   zstyle ':vcs_info:*' debug false
 
+  local dev_env_msg "$python_info[virtualenv]"
+
   # Define prompts.
-  PROMPT='%b%f${vcs_info_msg_0_:-${_prompt_aelesbao_pwd}}${vcs_info_msg_1_%:.}${vcs_info_msg_2_} %(!.%F{red}.%f)# %f'
-  PROMPT2='%b%F{white}%_ (!.%F{red}.%f)# %f# '
+  PROMPT='%b%f${vcs_info_msg_0_:-${_prompt_aelesbao_pwd}}${vcs_info_msg_1_%:.}${vcs_info_msg_2_}${dev_env_msg} %(!.%F{red}.%f)» %f'
+  PROMPT2='%b%F{white}%_ (!.%F{red}.%f)» %f» '
 }
 
 prompt_aelesbao_setup "$@"

@@ -33,12 +33,14 @@ zstyle ':prezto:load' pmodule \
   'utility' \
   'completion' \
   'command-not-found' \
+  'osx' \
   'tmux' \
   'archive' \
   'pacman' \
   'git' \
   'ruby' \
   'rails' \
+  'python' \
   'systemd' \
   'syntax-highlighting' \
   'history-substring-search' \

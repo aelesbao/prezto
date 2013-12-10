@@ -32,14 +32,12 @@ alias cap='bundle exec cap'
 # Solarized dir_colors
 [[ -f /etc/dir_colors ]] && eval `dircolors /etc/dir_colors`
 
-# Added PATH exports here temporaly
-[[ -d "$HOME/.gem/ruby/1.9.1/bin" ]] && export PATH="$HOME/.gem/ruby/1.9.1/bin:$PATH"
-[[ -d "$HOME/.rvm/bin" ]] && export PATH="$PATH:$HOME/.rvm/bin"
-[[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH"
-
-[[ -s "$HOME/.tmuxinator/scripts/tmuxinator" ]] && source $HOME/.tmuxinator/scripts/tmuxinator
-
 # Android SDK path
 [[ -d /usr/local/opt/android-sdk ]] && export ANDROID_HOME=/usr/local/opt/android-sdk
 
+# Add custom /bin
+[[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH"
 export PATH="./bin:$PATH"
+
+# Load RVM into a shell session
+[[ -s "$HOME/.rvm/scripts/rvm"  ]] && source "$HOME/.rvm/scripts/rvm"

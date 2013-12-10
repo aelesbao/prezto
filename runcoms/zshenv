@@ -111,6 +111,3 @@ fi
 
 # No beeps
 setopt NO_BEEP
-
-# Disable RVM warning for /etc/gemrc
-export rvm_ignore_gemrc_issues=1

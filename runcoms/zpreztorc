@@ -75,7 +75,7 @@ zstyle ':prezto:module:editor' dot-expansion 'yes'
 # zstyle ':prezto:module:git:status:ignore' submodules 'all'
 
 # Log format
-zstyle ':prezto:module:git:log:oneline' format '%C(blue)%h%C(reset) %s %C(magenta)%ar%C(reset) by %C(blue)%an%C(reset) %C(red)%d%C(reset)%n'
+zstyle ':prezto:module:git:log:oneline' format '%C(bold yellow)%h%C(reset) %s %C(magenta)%ar%C(reset) by %C(blue)%an%C(reset) %C(red)%d%C(reset)%n'
 
 #
 # GNU Utility

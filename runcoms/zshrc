@@ -2,6 +2,7 @@
 # Executes commands at the start of an interactive session.
 #
 # Authors:
+#   Augusto Elesbão <aelesbao@gmail.com>
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
@@ -12,6 +13,8 @@ fi
 
 # Customize to your needs...
 #
+stty -ixon # set the options for a terminal device interface
+
 setopt HIST_IGNORE_SPACE # history ignores lines starting with white spaces
 
 # Use CTRL+arrows to move backward and forward words

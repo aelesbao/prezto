@@ -30,3 +30,4 @@ if (( $+commands[npm] )); then
   unset cache_file
 fi
 
+export PATH="./node_modules/.bin:$PATH"

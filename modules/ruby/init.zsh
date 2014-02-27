@@ -12,7 +12,7 @@ if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
   unsetopt AUTO_NAME_DIRS
 
   # Source RVM.
-  source "$HOME/.rvm/scripts/rvm"
+  # source "$HOME/.rvm/scripts/rvm"
 
 # Load manually installed rbenv into the shell session.
 elif [[ -s "$HOME/.rbenv/bin/rbenv" ]]; then

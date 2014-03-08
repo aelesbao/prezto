@@ -4,6 +4,8 @@
 # Authors:
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #   Colin Hebert <hebert.colin@gmail.com>
+#   Georges Discry <georges@discry.be>
+#   Xavier Cambar <xcambar@gmail.com>
 #
 
 # Return if requirements are not found.
@@ -15,7 +17,7 @@ fi
 # Auto Start
 #
 
-if [[ -z "$TMUX" ]] && ( \
+if [[ -z "$TMUX" && -z "$EMACS" && -z "$VIM" ]] && ( \
   ( [[ -n "$SSH_TTY" ]] && zstyle -t ':prezto:module:tmux:auto-start' remote ) ||
   ( [[ -z "$SSH_TTY" ]] && zstyle -t ':prezto:module:tmux:auto-start' local ) \
 ); then
@@ -29,6 +31,7 @@ if [[ -z "$TMUX" ]] && ( \
     tmux new-session -d -s "$tmux_session"
   fi
 
+  # Attach to the 'default' session or to the last session used.
   exec tmux attach-session -t "$tmux_session"
 fi
 

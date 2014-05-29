@@ -40,6 +40,8 @@ function prompt_aelesbao_precmd {
   if (( $+functions[python-info] )); then
     python-info
   fi
+
+  _prompt_aelesbao_dev_env="%b%F{red}${python_info[virtualenv]}${ruby_info[version]}"
 }
 
 function prompt_aelesbao_setup {
@@ -54,7 +56,6 @@ function prompt_aelesbao_setup {
   local vcs_stashed_color='%F{cyan}'
   local vcs_unmerged_color='%F{red}'
   local vcs_upstream_color='%F{magenta}'
-  local dev_env_color='%%B%F{red}'
 
   setopt LOCAL_OPTIONS
   unsetopt XTRACE KSH_ARRAYS
@@ -109,7 +110,7 @@ function prompt_aelesbao_setup {
 
   # Define prompts.
   PROMPT='%b%f${vcs_info_msg_0_:-${_prompt_aelesbao_pwd}}${vcs_info_msg_1_%:.}${vcs_info_msg_2_} %(!.%F{red}.%f)» %f'
-  RPROMPT='${dev_env_color}${python_info[virtualenv]}${ruby_info[version]}'
+  RPROMPT='${_prompt_aelesbao_dev_env}'
   PROMPT2='%b%F{white}%_ (!.%F{red}.%f)» %f» '
 }
 

@@ -84,3 +84,5 @@ export LC_MONETARY="pt_BR.UTF-8"
 export LC_NUMERIC="pt_BR.UTF-8"
 export LC_TIME="pt_BR.UTF-8"
 export LC_ALL=
+
+export RBENV_ROOT=/usr/local/var/rbenv

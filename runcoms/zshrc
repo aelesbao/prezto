@@ -41,3 +41,6 @@ alias cap='bundle exec cap'
 # Add custom /bin
 [[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH"
 export PATH="./bin:$PATH"
+
+# FZF - Shell Fuzzy Finder
+[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh

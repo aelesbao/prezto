@@ -37,3 +37,7 @@ alias cap='bundle exec cap'
 
 # Android SDK path
 [[ -d /usr/local/opt/android-sdk ]] && export ANDROID_HOME=/usr/local/opt/android-sdk
+
+# Add custom /bin
+[[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH"
+export PATH="./bin:$PATH"

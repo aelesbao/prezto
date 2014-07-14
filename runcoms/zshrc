@@ -35,6 +35,9 @@ alias cap='bundle exec cap'
 # Solarized dir_colors
 [[ -f /etc/dir_colors ]] && eval `dircolors /etc/dir_colors`
 
+# JDK
+export JAVA_HOME=`/usr/libexec/java_home`
+
 # Android SDK path
 [[ -d /usr/local/opt/android-sdk ]] && export ANDROID_HOME=/usr/local/opt/android-sdk
 

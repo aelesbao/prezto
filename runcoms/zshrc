@@ -47,3 +47,6 @@ export PATH="./bin:$PATH"
 
 # FZF - Shell Fuzzy Finder
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
+
+# Load local zshrc
+[[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"

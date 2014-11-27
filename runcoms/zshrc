@@ -48,6 +48,11 @@ export JAVA_HOME=`/usr/libexec/java_home`
 [[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH"
 export PATH="./bin:$PATH"
 
+# Online help
+unalias run-help
+autoload run-help
+HELPDIR=/usr/local/share/zsh/help
+
 # FZF - Shell Fuzzy Finder
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 

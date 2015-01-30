@@ -33,7 +33,7 @@ alias cdgr='cd $(git-root)'
 alias cap='bundle exec cap'
 
 alias psg='ps aux | grep -i'
-alias ghb='git-hub-browse'
+alias ghb='hub browse'
 
 # Solarized dir_colors
 [[ -f /etc/dir_colors ]] && eval `dircolors /etc/dir_colors`

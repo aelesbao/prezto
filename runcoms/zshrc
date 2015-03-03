@@ -35,6 +35,8 @@ alias cap='bundle exec cap'
 alias psg='ps aux | grep -i'
 alias ghb='hub browse'
 
+alias youtube-dl-mp3='youtube-dl -x --audio-format mp3 --audio-quality 0'
+
 # Solarized dir_colors
 [[ -f /etc/dir_colors ]] && eval `dircolors /etc/dir_colors`
 

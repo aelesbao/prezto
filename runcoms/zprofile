@@ -86,4 +86,8 @@ export LC_NUMERIC="pt_BR.UTF-8"
 export LC_TIME="pt_BR.UTF-8"
 export LC_ALL=
 
-export RBENV_ROOT=/usr/local/var/rbenv
+if [[ "$OSTYPE" == darwin* ]]; then
+  export RBENV_ROOT=/usr/local/var/rbenv
+else
+  export RBENV_ROOT=$HOME/.rbenv
+fi

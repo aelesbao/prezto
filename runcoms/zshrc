@@ -35,7 +35,7 @@ alias youtube-dl-mp3='youtube-dl -x --audio-format mp3 --audio-quality 320K'
 [[ -f /etc/dir_colors ]] && eval `dircolors /etc/dir_colors`
 
 # JDK
-export JAVA_HOME=`/usr/libexec/java_home`
+[[ -x /usr/libexec/java_home ]] && export JAVA_HOME=`/usr/libexec/java_home`
 
 # Android SDK path
 [[ -d /usr/local/opt/android-sdk ]] && export ANDROID_HOME=/usr/local/opt/android-sdk

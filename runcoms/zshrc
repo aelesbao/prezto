@@ -44,16 +44,19 @@ alias youtube-dl-mp3='youtube-dl -x --audio-format mp3 --audio-quality 320K'
 [[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH"
 export PATH="./bin:$PATH"
 
-# Online help
-unalias run-help
-autoload run-help
-HELPDIR=/usr/local/share/zsh/help
+# Heroku Client
+[[ -d /usr/local/heroku/bin ]] && export PATH="/usr/local/heroku/bin:$PATH"
 
 # FZF - Shell Fuzzy Finder
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 
 # iTerm 2 Shell Integration
 [[ -f "$HOME/.iterm2_shell_integration.zsh" ]] && source "$HOME/.iterm2_shell_integration.zsh"
+
+# Online help
+unalias run-help
+autoload run-help
+HELPDIR=/usr/local/share/zsh/help
 
 # Load local zshrc
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"

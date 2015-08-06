@@ -53,6 +53,9 @@ export PATH="./bin:$PATH"
 # iTerm 2 Shell Integration
 [[ -f "$HOME/.iterm2_shell_integration.zsh" ]] && source "$HOME/.iterm2_shell_integration.zsh"
 
+# AWS Client
+[[ -f /etc/zsh/aws_complete.zsh ]] && source /etc/zsh/aws_complete.zsh
+
 # Online help
 unalias run-help
 autoload run-help

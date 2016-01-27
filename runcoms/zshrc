@@ -24,12 +24,23 @@ bindkey ';5C' emacs-forward-word
 # Aliases
 alias resource="source ~/.zshrc"
 
-alias pwsafe=" pwsafe"
+alias pwsafe=' pwsafe'
 alias cdgr='cd $(git-root)'
 alias psg='ps aux | grep -i'
 alias ghb='hub browse'
 
 alias youtube-dl-mp3='youtube-dl -x --audio-format mp3 --audio-quality 320K'
+
+function kafka-server {
+  JAVA_HOME="$(/usr/libexec/java_home -v 1.7)" kafka-server-start.sh /usr/local/etc/kafka/server.properties
+}
+
+function start-datomic-console {
+  DB=$1
+  datomic-console -p 8002 $DB datomic:dev://localhost:4334/$DB
+}
+
+[[ "$OSTYPE" == darwin* ]] && alias htop='sudo htop'
 
 # Solarized dir_colors
 [[ -f /etc/dir_colors ]] && eval `dircolors /etc/dir_colors`
@@ -42,7 +53,7 @@ alias youtube-dl-mp3='youtube-dl -x --audio-format mp3 --audio-quality 320K'
 
 # Add custom /bin
 [[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH"
-export PATH="./bin:$PATH"
+export PATH="./bin:./node_modules/.bin:$PATH"
 
 # Heroku Client
 [[ -d /usr/local/heroku/bin ]] && export PATH="/usr/local/heroku/bin:$PATH"
@@ -55,6 +66,15 @@ export PATH="./bin:$PATH"
 
 # AWS Client
 [[ -f /etc/zsh/aws_complete.zsh ]] && source /etc/zsh/aws_complete.zsh
+[[ -f /usr/local/share/zsh/site-functions/_aws ]] && source /usr/local/share/zsh/site-functions/_aws
+
+[[ -d "$HOME/nvm" ]] && export NVM_DIR="$HOME/.nvm"
+function nvm-enable {
+  if [[ "$OSTYPE" == darwin* ]]; then
+    nvm_prefix=$(brew --prefix nvm)
+  fi
+  [[ -d $nvm_prefix ]] && source $nvm_prefix/nvm.sh
+}
 
 # Load local zshrc
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"

@@ -28,6 +28,7 @@ alias pwsafe=' pwsafe'
 alias cdgr='cd $(git-root)'
 alias psg='ps aux | grep -i'
 alias ghb='hub browse'
+alias backup='rsync -Pha'
 
 alias youtube-dl-mp3='youtube-dl -x --audio-format mp3 --audio-quality 320K'
 

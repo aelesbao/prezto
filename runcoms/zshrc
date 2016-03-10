@@ -32,15 +32,6 @@ alias backup='rsync -Pha'
 
 alias youtube-dl-mp3='youtube-dl -x --audio-format mp3 --audio-quality 320K'
 
-function kafka-server {
-  JAVA_HOME="$(/usr/libexec/java_home -v 1.7)" kafka-server-start.sh /usr/local/etc/kafka/server.properties
-}
-
-function start-datomic-console {
-  DB=$1
-  datomic-console -p 8002 $DB datomic:dev://localhost:4334/$DB
-}
-
 [[ "$OSTYPE" == darwin* ]] && alias htop='sudo htop'
 
 # Solarized dir_colors
@@ -75,6 +66,19 @@ function nvm-enable {
     nvm_prefix=$(brew --prefix nvm)
   fi
   [[ -d $nvm_prefix ]] && source $nvm_prefix/nvm.sh
+}
+
+function start-docker {
+  zsh --login '/Applications/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh' 
+}
+
+function kafka-server {
+  JAVA_HOME="$(/usr/libexec/java_home -v 1.7)" kafka-server-start.sh /usr/local/etc/kafka/server.properties
+}
+
+function start-datomic-console {
+  DB=$1
+  datomic-console -p 3000 $DB datomic:dev://localhost:4334/$DB
 }
 
 # Load local zshrc

@@ -29,6 +29,7 @@ alias cdgr='cd $(git-root)'
 alias psg='ps aux | grep -i'
 alias ghb='hub browse'
 alias backup='rsync -Pha'
+alias date-iso='date +%Y-%m-%dT%H:%M:%S%z'
 
 alias youtube-dl-mp3='youtube-dl -x --audio-format mp3 --audio-quality 320K'
 
@@ -80,6 +81,8 @@ function start-datomic-console {
   DB=$1
   datomic-console -p 3000 $DB datomic:dev://localhost:4334/$DB
 }
+
+which hub >/dev/null && alias git=hub
 
 # Load local zshrc
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"

@@ -83,9 +83,6 @@ function install-completions {
   [ -f /usr/local/share/zsh/site-functions/_brew ] || \
     ln -s $(brew --prefix)/Library/Contributions/brew_zsh_completion.zsh \
           /usr/local/share/zsh/site-functions/_brew
-
-  ln -s $(brew --prefix awscli)/share/zsh/site-functions/_aws \
-    /usr/local/share/zsh/site-functions
 }
 
 which hub >/dev/null && alias git=hub

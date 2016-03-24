@@ -57,10 +57,6 @@ export PATH="./bin:./node_modules/.bin:$PATH"
 # iTerm 2 Shell Integration
 [[ -f "$HOME/.iterm2_shell_integration.zsh" ]] && source "$HOME/.iterm2_shell_integration.zsh"
 
-# AWS Client
-[[ -f /etc/zsh/aws_complete.zsh ]] && source /etc/zsh/aws_complete.zsh
-[[ -f /usr/local/share/zsh/site-functions/_aws ]] && source /usr/local/share/zsh/site-functions/_aws
-
 [[ -d "$HOME/nvm" ]] && export NVM_DIR="$HOME/.nvm"
 function nvm-enable {
   if [[ "$OSTYPE" == darwin* ]]; then
@@ -80,6 +76,16 @@ function kafka-server {
 function start-datomic-console {
   DB=$1
   datomic-console -p 3000 $DB datomic:dev://localhost:4334/$DB
+}
+
+# Installs completions that were not auto installed
+function install-completions {
+  [ -f /usr/local/share/zsh/site-functions/_brew ] || \
+    ln -s $(brew --prefix)/Library/Contributions/brew_zsh_completion.zsh \
+          /usr/local/share/zsh/site-functions/_brew
+
+  ln -s $(brew --prefix awscli)/share/zsh/site-functions/_aws \
+    /usr/local/share/zsh/site-functions
 }
 
 which hub >/dev/null && alias git=hub

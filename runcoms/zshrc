@@ -69,8 +69,9 @@ function nvm-enable {
   [[ -d $nvm_prefix ]] && source $nvm_prefix/nvm.sh
 }
 
-function start-docker {
-  zsh --login '/Applications/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh' 
+function docker-env {
+  docker-machine start $1
+  eval $(docker-machine env $1)
 }
 
 function kafka-server {

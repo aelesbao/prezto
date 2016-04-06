@@ -74,6 +74,11 @@ function docker-env {
   eval $(docker-machine env $1)
 }
 
+function docker-clean {
+  docker ps -a | grep 'ago' | awk '{print $1}' | xargs docker rm
+  docker images | grep '<none>' | awk '{print $3}' | xargs docker rmi
+}
+
 function kafka-server {
   JAVA_HOME="$(/usr/libexec/java_home -v 1.7)" kafka-server-start.sh /usr/local/etc/kafka/server.properties
 }

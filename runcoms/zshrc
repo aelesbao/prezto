@@ -41,6 +41,9 @@ alias youtube-dl-mp3='youtube-dl -x --audio-format mp3 --audio-quality 320K'
 # JDK
 [[ -x /usr/libexec/java_home ]] && export JAVA_HOME=`/usr/libexec/java_home`
 
+# Gradle
+[[ -d /usr/local/opt/gradle ]] && export GRADLE_HOME=/usr/local/opt/gradle/libexec
+
 # Android SDK path
 [[ -d /usr/local/opt/android-sdk ]] && export ANDROID_HOME=/usr/local/opt/android-sdk
 

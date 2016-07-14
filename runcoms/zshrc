@@ -24,7 +24,7 @@ bindkey ';5C' emacs-forward-word
 # Aliases
 alias resource="source ~/.zshrc"
 
-alias gc='git ci'
+alias gc='git cis'
 
 alias pwsafe=' pwsafe'
 alias cdgr='cd $(git-root)'

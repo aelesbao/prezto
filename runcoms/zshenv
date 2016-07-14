@@ -90,8 +90,8 @@ unset path_file
 path=(
   ./bin
   $HOME/bin
-  /usr/local/{bin,sbin}
   /usr/{bin,sbin}
+  /usr/local/{bin,sbin}
   /{bin,sbin}
   $path
 )

@@ -22,20 +22,20 @@ bindkey ';5D' emacs-backward-word
 bindkey ';5C' emacs-forward-word
 
 # Aliases
+which hub >/dev/null && alias git='hub'
+
 alias resource="source ~/.zshrc"
 
 alias gc='git cis'
+alias ghb='hub browse'
 
 alias pwsafe=' pwsafe'
 alias cdgr='cd $(git-root)'
 alias psg='ps aux | grep -i'
-alias ghb='hub browse'
 alias backup='rsync -Pha'
 alias date-iso='date +%Y-%m-%dT%H:%M:%S%z'
 
 alias youtube-dl-mp3='youtube-dl -x --audio-format mp3 --audio-quality 320K'
-
-[[ "$OSTYPE" == darwin* ]] && alias htop='sudo htop'
 
 # Solarized dir_colors
 [[ -f /etc/dir_colors ]] && eval `dircolors /etc/dir_colors`
@@ -104,8 +104,6 @@ function install-completions {
     ln -s $(brew --prefix)/Library/Contributions/brew_zsh_completion.zsh \
           /usr/local/share/zsh/site-functions/_brew
 }
-
-which hub >/dev/null && alias git=hub
 
 # Load local zshrc
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"

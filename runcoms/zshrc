@@ -75,9 +75,9 @@ function nvm-enable {
   [[ -d $nvm_prefix ]] && source $nvm_prefix/nvm.sh
 }
 
-if [[ -d "$HOME/src/gocode" ]]; then
-  export GOPATH="$HOME/src/gocode"
-  export PATH="$PATH:$HOME/src/gocode/bin"
+if [[ -d "$HOME/workspace/gocode" ]]; then
+  export GOPATH="$HOME/workspace/gocode"
+  export PATH="$PATH:$HOME/workspace/gocode/bin"
 fi
 
 function docker-env {

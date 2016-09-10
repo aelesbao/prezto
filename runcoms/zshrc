@@ -22,8 +22,8 @@ bindkey ';5D' emacs-backward-word
 bindkey ';5C' emacs-forward-word
 
 # Aliases
-which nvim >/dev/null && alias vim='nvim'
-which hub >/dev/null && alias git='hub'
+(( $+commands[nvim] )) && alias vim='nvim'
+(( $+commands[hub] )) && alias git='hub'
 
 alias resource="source ~/.zshrc"
 
@@ -50,6 +50,9 @@ alias youtube-dl-mp3='youtube-dl -x --audio-format mp3 --audio-quality 320K'
 # Android SDK path
 [[ -d /usr/local/opt/android-sdk ]] && export ANDROID_HOME=/usr/local/opt/android-sdk
 
+# pyenv
+[[ -d "/usr/local/var/pyenv" ]] && export PYENV_ROOT="/usr/local/var/pyenv"
+
 # Add custom /bin
 [[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH"
 export PATH="./bin:./node_modules/.bin:$PATH"
@@ -67,7 +70,7 @@ export PATH="./bin:./node_modules/.bin:$PATH"
 # iTerm 2 Shell Integration
 [[ -f "$HOME/.iterm2_shell_integration.zsh" ]] && source "$HOME/.iterm2_shell_integration.zsh"
 
-[[ -d "$HOME/nvm" ]] && export NVM_DIR="$HOME/.nvm"
+[[ -d "$HOME/.nvm" ]] && export NVM_DIR="$HOME/.nvm"
 function nvm-enable {
   if [[ "$OSTYPE" == darwin* ]]; then
     nvm_prefix=$(brew --prefix nvm)

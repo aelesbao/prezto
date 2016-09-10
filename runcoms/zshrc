@@ -51,7 +51,10 @@ alias youtube-dl-mp3='youtube-dl -x --audio-format mp3 --audio-quality 320K'
 [[ -d /usr/local/opt/android-sdk ]] && export ANDROID_HOME=/usr/local/opt/android-sdk
 
 # pyenv
-[[ -d "/usr/local/var/pyenv" ]] && export PYENV_ROOT="/usr/local/var/pyenv"
+[[ -d /usr/local/var/pyenv ]] && export PYENV_ROOT=/usr/local/var/pyenv
+
+# Anaconda
+[[ -d "$HOME/anaconda3/bin" ]] && export PATH="$HOME/anaconda3/bin:$PATH"
 
 # Add custom /bin
 [[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH"

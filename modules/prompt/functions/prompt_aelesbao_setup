@@ -32,16 +32,6 @@ function prompt_aelesbao_pwd {
 function prompt_aelesbao_precmd {
   prompt_aelesbao_pwd
   vcs_info
-
-  if (( $+functions[ruby-info] )); then
-    ruby-info
-  fi
-
-  if (( $+functions[python-info] )); then
-    python-info
-  fi
-
-  _prompt_aelesbao_dev_env="%b%F{red}${python_info[virtualenv]}${ruby_info[version]}"
 }
 
 function prompt_aelesbao_setup {
@@ -110,7 +100,6 @@ function prompt_aelesbao_setup {
 
   # Define prompts.
   PROMPT='%b%f${vcs_info_msg_0_:-${_prompt_aelesbao_pwd}}${vcs_info_msg_1_%:.}${vcs_info_msg_2_} %(!.%F{red}.%f)» %f'
-  RPROMPT='${_prompt_aelesbao_dev_env}'
   PROMPT2='%b%F{white}%_ (!.%F{red}.%f)» %f» '
 }
 

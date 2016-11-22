@@ -40,6 +40,8 @@ alias date-iso='date +%Y-%m-%dT%H:%M:%S%z'
 
 alias youtube-dl-mp3='youtube-dl -x --audio-format mp3 --audio-quality 320K'
 
+site_functions_path=/usr/local/share/zsh/site-functions
+
 # Solarized dir_colors
 [[ -f /etc/dir_colors ]] && eval `dircolors /etc/dir_colors`
 
@@ -63,7 +65,7 @@ alias youtube-dl-mp3='youtube-dl -x --audio-format mp3 --audio-quality 320K'
 
 # AWS Client
 [[ -f /etc/zsh/aws_complete.zsh  ]] && source /etc/zsh/aws_complete.zsh
-[[ -f /usr/local/share/zsh/site-functions/_aws  ]] && source /usr/local/share/zsh/site-functions/_aws
+[[ -f $site_functions_path/_aws  ]] && source $site_functions_path/_aws
 
 # Heroku Client
 [[ -d /usr/local/heroku/bin ]] && export PATH="/usr/local/heroku/bin:$PATH"
@@ -108,9 +110,16 @@ function start-datomic-console {
 
 # Installs completions that were not auto installed
 function install-completions {
-  [ -f /usr/local/share/zsh/site-functions/_brew ] || \
+  [ -f $site_functions_path/_brew ] || \
     ln -s $(brew --prefix)/Library/Contributions/brew_zsh_completion.zsh \
-          /usr/local/share/zsh/site-functions/_brew
+          $site_functions_path/_brew
+
+  if [ -d /Applications/Docker.app/Contents/Resources/etc ]; then
+    docker_functions=(docker docker-compose docker-machine)
+    for fn in $docker_functions; do
+      ln -s /Applications/Docker.app/Contents/Resources/etc/$fn.zsh-completion $site_functions_path/_$fn
+    done
+  fi
 }
 
 # Load local zshrc

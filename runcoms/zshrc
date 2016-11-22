@@ -52,6 +52,9 @@ alias youtube-dl-mp3='youtube-dl -x --audio-format mp3 --audio-quality 320K'
 # Android SDK path
 [[ -d /usr/local/opt/android-sdk ]] && export ANDROID_HOME=/usr/local/opt/android-sdk
 
+# FindBugs
+[[ -d /usr/local/opt/findbugs ]] && export FINDBUGS_HOME=/usr/local/opt/findbugs
+
 # pyenv
 [[ -d /usr/local/var/pyenv ]] && export PYENV_ROOT=/usr/local/var/pyenv
 

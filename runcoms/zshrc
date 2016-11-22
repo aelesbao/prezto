@@ -61,10 +61,6 @@ alias youtube-dl-mp3='youtube-dl -x --audio-format mp3 --audio-quality 320K'
 # Anaconda
 #[[ -d "$HOME/anaconda3/bin" ]] && export PATH="$HOME/anaconda3/bin:$PATH"
 
-# Add custom /bin
-[[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH"
-export PATH="./bin:./node_modules/.bin:$PATH"
-
 # AWS Client
 [[ -f /etc/zsh/aws_complete.zsh  ]] && source /etc/zsh/aws_complete.zsh
 [[ -f /usr/local/share/zsh/site-functions/_aws  ]] && source /usr/local/share/zsh/site-functions/_aws

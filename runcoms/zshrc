@@ -71,7 +71,12 @@ site_functions_path=/usr/local/share/zsh/site-functions
 [[ -d /usr/local/heroku/bin ]] && export PATH="/usr/local/heroku/bin:$PATH"
 
 # FZF - Shell Fuzzy Finder
-[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
+if [[ -f ~/.fzf.zsh ]]; then
+  # Setting ag as the default source for fzf. This will make fzf respect your .gitignore
+  export FZF_DEFAULT_COMMAND='ag -g ""'
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+  source ~/.fzf.zsh
+fi
 
 # iTerm 2 Shell Integration
 [[ -f "$HOME/.iterm2_shell_integration.zsh" ]] && source "$HOME/.iterm2_shell_integration.zsh"

@@ -32,6 +32,8 @@ alias ghb='hub browse'
 alias gr='/usr/local/bin/git rebase'
 alias gri='/usr/local/bin/git rebase --interactive'
 
+alias dc='docker-compose'
+
 alias pwsafe=' pwsafe'
 alias cdgr='cd $(git-root)'
 alias psg='ps aux | grep -i'

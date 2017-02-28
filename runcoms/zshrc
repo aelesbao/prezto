@@ -105,6 +105,7 @@ function docker-env {
 
 function docker-clean {
   docker ps -a | grep 'ago' | awk '{print $1}' | xargs docker rm
+  docker volume prune
   docker images | grep '<none>' | awk '{print $3}' | xargs docker rmi
 }
 

@@ -15,7 +15,8 @@ fi
 #
 stty -ixon # set the options for a terminal device interface
 
-setopt HIST_IGNORE_SPACE # history ignores lines starting with white spaces
+# history ignores lines starting with white spaces
+setopt HIST_IGNORE_SPACE
 
 # Use CTRL+arrows to move backward and forward words
 bindkey ';5D' emacs-backward-word
@@ -25,7 +26,13 @@ bindkey ';5C' emacs-forward-word
 (( $+commands[nvim] )) && alias vim='nvim'
 (( $+commands[hub] )) && alias git='hub'
 
-alias resource="source ~/.zshrc"
+alias resource="source ${HOME}/.zshrc"
+
+function zupdate() {
+  git -C "${HOME}/.zprezto" stash -u \
+    && git -C "${HOME}/.zprezto" pull --rebase --prune \
+    && git -C "${HOME}/.zprezto" stash pop
+}
 
 alias gc='git cis'
 alias ghb='hub browse'

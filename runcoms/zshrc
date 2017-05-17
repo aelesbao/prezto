@@ -100,6 +100,10 @@ if [[ -f ~/.fzf.zsh ]]; then
   source ~/.fzf.zsh
 fi
 
+if [ -f ~/.config/exercism/exercism_completion.zsh ]; then
+  source ~/.config/exercism/exercism_completion.zsh
+fi
+
 if (( ${+commands[kubectl]} )); then
   source <(kubectl completion zsh)
 fi

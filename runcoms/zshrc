@@ -64,6 +64,12 @@ site_functions_path=/usr/local/share/zsh/site-functions
 # Gradle
 [[ -d /usr/local/opt/gradle ]] && export GRADLE_HOME=/usr/local/opt/gradle/libexec
 
+# Groovy
+[[ -d /usr/local/opt/groovy/libexec ]] && export GROOVY_HOME=/usr/local/opt/groovy/libexec
+
+# Liquibase
+[[ -d /usr/local/opt/liquibase/libexec ]] && export LIQUIBASE_HOME=/usr/local/opt/liquibase/libexec
+
 # Android SDK path
 [[ -d /usr/local/opt/android-sdk ]] && export ANDROID_HOME=/usr/local/opt/android-sdk
 

@@ -34,6 +34,8 @@ function zupdate() {
     && git -C "${HOME}/.zprezto" stash pop
 }
 
+alias vim='vim -X'
+
 alias gc='git cis'
 alias ghb='hub browse'
 alias gr='/usr/local/bin/git rebase'

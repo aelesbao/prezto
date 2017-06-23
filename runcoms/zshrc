@@ -28,12 +28,6 @@ bindkey ';5C' emacs-forward-word
 
 alias resource="source ${HOME}/.zshrc"
 
-function zupdate() {
-  git -C "${HOME}/.zprezto" stash -u \
-    && git -C "${HOME}/.zprezto" pull --rebase --prune \
-    && git -C "${HOME}/.zprezto" stash pop
-}
-
 alias vim='vim -X'
 
 alias gc='git cis'
@@ -156,6 +150,14 @@ function install-completions {
       ln -s /Applications/Docker.app/Contents/Resources/etc/$fn.zsh-completion $site_functions_path/_$fn
     done
   fi
+
+  zcompile "${ZDOTDIR:-$HOME}/.zcompdump"
+}
+
+function zupdate() {
+  git -C "${HOME}/.zprezto" stash -u \
+    && git -C "${HOME}/.zprezto" pull --rebase --prune \
+    && git -C "${HOME}/.zprezto" stash pop
 }
 
 # Load local zshrc

@@ -160,6 +160,12 @@ function install-completions {
   zcompile "${ZDOTDIR:-$HOME}/.zcompdump"
 }
 
+function update-system-env {
+  for var in $(env | grep _HOME | awk -F= '{print $1}'); do
+    launchctl setenv $var "${(P)var}"
+  done
+}
+
 function zupdate() {
   git -C "${HOME}/.zprezto" stash -u \
     && git -C "${HOME}/.zprezto" pull --rebase --prune \

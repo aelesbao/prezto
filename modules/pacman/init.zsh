@@ -40,51 +40,45 @@ fi
 alias pac="${_pacman_frontend}"
 
 # Installs packages from repositories.
-alias paci="${_pacman_sudo}${_pacman_frontend} -S"
+alias paci="${_pacman_sudo}${_pacman_frontend} --sync"
 
 # Installs packages from files.
-alias pacI="${_pacman_sudo}${_pacman_frontend} -U"
+alias pacI="${_pacman_sudo}${_pacman_frontend} --upgrade"
 
 # Removes packages and unneeded dependencies.
-alias pacx="${_pacman_sudo}${_pacman_frontend} -R"
+alias pacx="${_pacman_sudo}${_pacman_frontend} --remove"
 
 # Removes packages, their configuration, and unneeded dependencies.
-alias pacX="${_pacman_sudo}${_pacman_frontend} -R --nosave --recursive"
+alias pacX="${_pacman_sudo}${_pacman_frontend} --remove --nosave --recursive"
 
 # Displays information about a package from the repositories.
-alias pacq="${_pacman_frontend} -S --info"
+alias pacq="${_pacman_frontend} --sync --info"
 
 # Displays information about a package from the local database.
-alias pacQ="${_pacman_frontend} -Q --info"
-
-# List the contents of the queried package
-alias pacL="${_pacman_frontend} -Q -l"
-
-# Query the package that owns <file>
-alias pacO="${_pacman_frontend} -Q -o"
+alias pacQ="${_pacman_frontend} --query --info"
 
 # Searches for packages in the repositories.
-alias pacs="${_pacman_frontend} -S --search"
+alias pacs="${_pacman_frontend} --sync --search"
 
 # Searches for packages in the local database.
-alias pacS="${_pacman_frontend} -Q --search"
+alias pacS="${_pacman_frontend} --query --search"
 
 # Lists orphan packages.
-alias pacman-list-orphans="${_pacman_sudo}${_pacman_frontend} -Q --deps --unrequired"
+alias pacman-list-orphans="${_pacman_sudo}${_pacman_frontend} --query --deps --unrequired"
 
 # Removes orphan packages.
-alias pacman-remove-orphans="${_pacman_sudo}${_pacman_frontend} -R --recursive \$(${_pacman_frontend} --quiet -Q --deps --unrequired)"
+alias pacman-remove-orphans="${_pacman_sudo}${_pacman_frontend} --remove --recursive \$(${_pacman_frontend} --quiet --query --deps --unrequired)"
 
 # Synchronizes the local package and Arch Build System databases against the
-# repositories.
-if (( $+commands[abs] )); then
-  alias pacu="${_pacman_sudo}${_pacman_frontend} -S --refresh && sudo abs"
+# repositories using the asp tool.
+if (( $+commands[asp] )); then
+  alias pacu="${_pacman_sudo}${_pacman_frontend} --sync --refresh && sudo asp update"
 else
-  alias pacu="${_pacman_sudo}${_pacman_frontend} -S --refresh"
+  alias pacu="${_pacman_sudo}${_pacman_frontend} --sync --refresh"
 fi
 
 # Synchronizes the local package database against the repositories then
 # upgrades outdated packages.
-alias pacU="${_pacman_sudo}${_pacman_frontend} -S --refresh --sysupgrade"
+alias pacU="${_pacman_sudo}${_pacman_frontend} --sync --refresh --sysupgrade"
 
 unset _pacman_{frontend,sudo}

@@ -12,6 +12,8 @@
   if [[ -s "$zcompdump" && (! -s "${zcompdump}.zwc" || "$zcompdump" -nt "${zcompdump}.zwc") ]]; then
     zcompile "$zcompdump"
   fi
+
+  [[ "$OSTYPE" == darwin* ]] && update-system-env
 } &!
 
 if [[ "$PROFILE_STARTUP" == true ]]; then

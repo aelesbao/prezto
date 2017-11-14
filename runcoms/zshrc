@@ -101,7 +101,7 @@ if [[ -f ~/.fzf.zsh ]]; then
 fi
 
 if (( ${+commands[kubectl]} )); then
-  source <(kubectl completion zsh)
+  #source <(kubectl completion zsh)
 fi
 
 if (( ${+commands[thefuck]} )); then

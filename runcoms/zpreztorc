@@ -32,19 +32,12 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
-  'command-not-found' \
   'osx' \
   'tmux' \
-  'archive' \
-  'pacman' \
   'rsync' \
   'git' \
   'ruby' \
-  'rails' \
   'python' \
-  'bower' \
-  'systemd' \
-  'syntax-highlighting' \
   'history-substring-search' \
   'prompt'
 

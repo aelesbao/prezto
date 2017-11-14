@@ -5,6 +5,16 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
+export PROFILE_STARTUP=false
+if [[ "$PROFILE_STARTUP" == true ]]; then
+  # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
+  PS4=$'%D{%M%S%.} %N:%i> '
+  exec 3>&2 2>"$TMPDIR/startlog.$$"
+  setopt xtrace prompt_subst
+
+  zmodload zsh/zprof
+fi
+
 # Ensure that a non-login, non-interactive shell has a defined environment.
 if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"

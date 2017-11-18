@@ -32,6 +32,16 @@ function prompt_aelesbao_pwd {
 function prompt_aelesbao_precmd {
   prompt_aelesbao_pwd
   vcs_info
+
+  #if (( $+functions[ruby-info] )); then
+    #ruby-info
+  #fi
+
+  #if (( $+functions[python-info] )); then
+    #python-info
+  #fi
+
+  #_prompt_aelesbao_dev_env="%b%F{red}${python_info[virtualenv]}${ruby_info[version]}"
 }
 
 function prompt_aelesbao_setup {

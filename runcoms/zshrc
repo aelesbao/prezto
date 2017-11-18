@@ -86,8 +86,7 @@ site_functions_path=/usr/local/share/zsh/site-functions
 #[[ -d "$HOME/anaconda3/bin" ]] && export PATH="$HOME/anaconda3/bin:$PATH"
 
 # AWS Client
-[[ -f /etc/zsh/aws_complete.zsh  ]] && source /etc/zsh/aws_complete.zsh
-[[ -f $site_functions_path/_aws  ]] && source $site_functions_path/_aws
+[[ -f $site_functions_path/aws_zsh_completer.sh  ]] && source $site_functions_path/aws_zsh_completer.sh
 
 # Heroku Client
 [[ -d /usr/local/heroku/bin ]] && export PATH="/usr/local/heroku/bin:$PATH"

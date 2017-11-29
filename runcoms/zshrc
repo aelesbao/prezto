@@ -25,6 +25,7 @@ bindkey ';5C' emacs-forward-word
 # Aliases
 (( $+commands[nvim] )) && alias vim='nvim'
 (( $+commands[hub] )) && alias git='hub'
+(( $+commands[pip2] )) && alias pip='pip2'
 
 alias resource="source ${HOME}/.zshrc"
 
@@ -103,7 +104,9 @@ if (( ${+commands[kubectl]} )); then
   #source <(kubectl completion zsh)
 fi
 
-if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+if (( ${+commands[pyenv-virtualenv-init]} )); then
+  #eval "$(pyenv virtualenv-init -)"
+fi
 
 if (( ${+commands[thefuck]} )); then
   eval "$(thefuck --alias)"

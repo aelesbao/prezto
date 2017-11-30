@@ -113,10 +113,6 @@ if (( ${+commands[thefuck]} )); then
   eval "$(thefuck --alias)"
 fi
 
-if (( ${+commands[autojump]} )); then
-  [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
-fi
-
 # iTerm 2 Shell Integration
 [[ -f "$HOME/.iterm2_shell_integration.zsh" ]] && source "$HOME/.iterm2_shell_integration.zsh"
 

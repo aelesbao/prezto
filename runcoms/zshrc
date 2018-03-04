@@ -25,7 +25,6 @@ bindkey ';5C' emacs-forward-word
 # Aliases
 (( $+commands[nvim] )) && alias vim='nvim'
 (( $+commands[hub] )) && alias git='hub'
-(( $+commands[pip2] )) && alias pip='pip2'
 (( $+commands[trash] )) && alias rm='trash'
 
 alias resource="source ${HOME}/.zshrc"

@@ -89,7 +89,7 @@ function prompt_aelesbao_setup {
   zstyle ':prezto:module:ruby:info:version' format '%v'
 
   # Set vcs_info parameters.
-  zstyle ':vcs_info:*'     enable git hg bzr svn
+  zstyle ':vcs_info:*'     enable git
   zstyle ':vcs_info:git:*' check-for-changes false
 
   local msg_0_format="%{$vcs_repository_color%}%r"

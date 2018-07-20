@@ -46,7 +46,7 @@ alias date-iso='date +%Y-%m-%dT%H:%M:%S%z'
 
 alias youtube-dl-mp3='youtube-dl -x --audio-format mp3 --audio-quality 320K'
 
-path=(./bin $HOME/bin $path)
+path=(./bin $HOME/bin ${HOME}/.local/bin $path)
 
 site_functions_path=/usr/local/share/zsh/site-functions
 
@@ -70,6 +70,7 @@ site_functions_path=/usr/local/share/zsh/site-functions
 
 # Spark
 [[ -d /usr/local/opt/apache-spark/libexec ]] && export SPARK_HOME=/usr/local/opt/apache-spark/libexec
+export PYSPARK_PYTHON=python3
 
 # Android SDK path
 [[ -d /usr/local/opt/android-sdk ]] && export ANDROID_HOME=/usr/local/opt/android-sdk

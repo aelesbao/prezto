@@ -113,6 +113,10 @@ if (( ${+commands[thefuck]} )); then
   eval "$(thefuck --alias)"
 fi
 
+if (( ${+commands[direnv]} )); then
+  eval "$(direnv hook zsh)"
+fi
+
 # iTerm 2 Shell Integration
 [[ -f "$HOME/.iterm2_shell_integration.zsh" ]] && source "$HOME/.iterm2_shell_integration.zsh"
 

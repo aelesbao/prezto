@@ -183,6 +183,8 @@ function install-completions {
 }
 
 function update-system-env {
+  launchctl setenv PATH "${PATH}"
+
   for var in $(env | grep _HOME | awk -F= '{print $1}'); do
     launchctl setenv $var "${(P)var}"
   done
@@ -192,6 +194,11 @@ function zupdate() {
   git -C "${HOME}/.zprezto" stash -u \
     && git -C "${HOME}/.zprezto" pull --rebase --prune \
     && git -C "${HOME}/.zprezto" stash pop
+}
+
+function notify {
+  osascript -e "display notification \"$1\""
+  say "$1"
 }
 
 # Load local zshrc

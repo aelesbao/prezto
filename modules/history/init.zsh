@@ -7,14 +7,6 @@
 #
 
 #
-# Variables
-#
-
-HISTFILE="${ZDOTDIR:-$HOME}/.zhistory"       # The path to the history file.
-HISTSIZE=10000                   # The maximum number of events to save in the internal history.
-SAVEHIST=10000                   # The maximum number of events to save in the history file.
-
-#
 # Options
 #
 
@@ -32,6 +24,14 @@ setopt HIST_REDUCE_BLANKS        # Trim multiple insgnificant blanks.
 setopt HIST_VERIFY               # Do not execute immediately upon history expansion.
 setopt HIST_BEEP                 # Beep when accessing non-existent history.
 setopt INTERACTIVE_COMMENTS      # Enable command line comments
+
+#
+# Variables
+#
+
+HISTFILE="${ZDOTDIR:-$HOME}/.zhistory"  # The path to the history file.
+HISTSIZE=10000                   # The maximum number of events to save in the internal history.
+SAVEHIST=10000                   # The maximum number of events to save in the history file.
 
 #
 # Aliases

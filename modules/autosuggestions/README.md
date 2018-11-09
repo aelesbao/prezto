@@ -1,3 +1,11 @@
+Autosuggestions
+===============
+
+Integrates [zsh-autosuggestions][1] into Prezto, which implements the
+[Fish shell][2]'s autosuggestions feature, where the user can type in any part
+of a previously entered command and Zsh suggests commands as you type based on
+history and completions.
+
 If this module is used in conjunction with the *syntax-highlighting* module,
 this module must be loaded **after** the *syntax-highlighting* module.
 

@@ -45,7 +45,9 @@ zstyle ':prezto:load' pmodule \
   'syntax-highlighting' \
   'autosuggestions' \
   'fasd' \
-  'prompt'
+  'prompt' \
+  'docker' \
+  'databricks'
 
 #
 # Autosuggestions

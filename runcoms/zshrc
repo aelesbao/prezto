@@ -98,7 +98,7 @@ if (( ${+commands[kubectl]} )); then
 fi
 
 if (( ${+commands[doctl]} )); then
-  source <(doctl completion zsh)
+  source <(doctl completion zsh) &!
 fi
 
 if (( ${+commands[pyenv-virtualenv-init]} )); then

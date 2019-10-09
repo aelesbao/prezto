@@ -88,7 +88,7 @@ export PYSPARK_PYTHON=python3
 # FZF - Shell Fuzzy Finder
 if [[ -f ~/.fzf.zsh ]]; then
   # Setting ag as the default source for fzf. This will make fzf respect your .gitignore
-  export FZF_DEFAULT_COMMAND='ag -g ""'
+  export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
   source ~/.fzf.zsh
 fi

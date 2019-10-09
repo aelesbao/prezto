@@ -101,9 +101,9 @@ if (( ${+commands[doctl]} )); then
   source <(doctl completion zsh) &!
 fi
 
-if (( ${+commands[pyenv-virtualenv-init]} )); then
+#if (( ${+commands[pyenv-virtualenv-init]} )); then
   #eval "$(pyenv virtualenv-init -)"
-fi
+#fi
 
 if (( ${+commands[jenv]} )); then
   eval "$(jenv init -)"

@@ -29,8 +29,6 @@ bindkey ';5C' emacs-forward-word
 
 alias resource="source ${HOME}/.zshrc"
 
-alias vim='vim -X'
-
 alias gc='git cis'
 alias ghb='hub browse'
 alias gr='/usr/local/bin/git rebase'

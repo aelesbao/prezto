@@ -82,12 +82,6 @@ export PYSPARK_PYTHON=python3
 # Travis CLI
 [ -f "$HOME/.travis/travis.sh" ] && source "$HOME/.travis/travis.sh"
 
-# Anaconda
-#[[ -d "$HOME/anaconda3/bin" ]] && export PATH="$HOME/anaconda3/bin:$PATH"
-
-# AWS Client
-[[ -f $site_functions_path/aws_zsh_completer.sh  ]] && source $site_functions_path/aws_zsh_completer.sh
-
 # Heroku Client
 [[ -d /usr/local/heroku/bin ]] && export PATH="/usr/local/heroku/bin:$PATH"
 

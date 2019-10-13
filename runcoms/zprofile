@@ -43,6 +43,8 @@ typeset -gU cdpath fpath mailpath path
 
 # Set the list of directories that Zsh searches for programs.
 path=(
+  ./bin
+  $HOME/{bin,.local/bin,.iterm2}
   /usr/local/{bin,sbin}
   $path
 )
@@ -78,4 +80,38 @@ else
   export RBENV_ROOT=$HOME/.rbenv
 fi
 
+site_functions_path=/usr/local/share/zsh/site-functions
+
+# JDK
+[[ -x /usr/libexec/java_home ]] && export JAVA_HOME=`/usr/libexec/java_home`
+
+# Gradle
+[[ -d /usr/local/opt/gradle ]] && export GRADLE_HOME=/usr/local/opt/gradle/libexec
+
+# Groovy
+[[ -d /usr/local/opt/groovy/libexec ]] && export GROOVY_HOME=/usr/local/opt/groovy/libexec
+
+# Liquibase
+[[ -d /usr/local/opt/liquibase/libexec ]] && export LIQUIBASE_HOME=/usr/local/opt/liquibase/libexec
+
+# Hadoop
+[[ -d /usr/local/opt/hadoop/libexec ]] && export HADOOP_HOME=/usr/local/opt/hadoop/libexec
+
+# Spark
+[[ -d /usr/local/opt/apache-spark/libexec ]] && export SPARK_HOME=/usr/local/opt/apache-spark/libexec
+export PYSPARK_PYTHON=python3
+
+# Android SDK path
+[[ -d /usr/local/opt/android-sdk ]] && export ANDROID_HOME=/usr/local/opt/android-sdk
+
+# FindBugs
+[[ -d /usr/local/opt/findbugs ]] && export FINDBUGS_HOME=/usr/local/opt/findbugs
+
+# pyenv
+[[ -d /usr/local/var/pyenv ]] && export PYENV_ROOT=/usr/local/var/pyenv
+
+# Heroku Client
+[[ -d /usr/local/heroku/bin ]] && export PATH="/usr/local/heroku/bin:$PATH"
+
+# Rust Cargo
 export PATH="$HOME/.cargo/bin:$PATH"

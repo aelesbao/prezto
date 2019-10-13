@@ -44,46 +44,11 @@ alias date-iso='date +%Y-%m-%dT%H:%M:%S%z'
 
 alias youtube-dl-mp3='youtube-dl -x --audio-format mp3 --audio-quality 320K'
 
-path=(./bin $HOME/bin ${HOME}/.local/bin $path)
-
-site_functions_path=/usr/local/share/zsh/site-functions
-
 # Solarized dir_colors
 [[ -f /etc/dir_colors ]] && eval `dircolors /etc/dir_colors`
 
-# JDK
-[[ -x /usr/libexec/java_home ]] && export JAVA_HOME=`/usr/libexec/java_home`
-
-# Gradle
-[[ -d /usr/local/opt/gradle ]] && export GRADLE_HOME=/usr/local/opt/gradle/libexec
-
-# Groovy
-[[ -d /usr/local/opt/groovy/libexec ]] && export GROOVY_HOME=/usr/local/opt/groovy/libexec
-
-# Liquibase
-[[ -d /usr/local/opt/liquibase/libexec ]] && export LIQUIBASE_HOME=/usr/local/opt/liquibase/libexec
-
-# Hadoop
-[[ -d /usr/local/opt/hadoop/libexec ]] && export HADOOP_HOME=/usr/local/opt/hadoop/libexec
-
-# Spark
-[[ -d /usr/local/opt/apache-spark/libexec ]] && export SPARK_HOME=/usr/local/opt/apache-spark/libexec
-export PYSPARK_PYTHON=python3
-
-# Android SDK path
-[[ -d /usr/local/opt/android-sdk ]] && export ANDROID_HOME=/usr/local/opt/android-sdk
-
-# FindBugs
-[[ -d /usr/local/opt/findbugs ]] && export FINDBUGS_HOME=/usr/local/opt/findbugs
-
-# pyenv
-[[ -d /usr/local/var/pyenv ]] && export PYENV_ROOT=/usr/local/var/pyenv
-
 # Travis CLI
 [ -f "$HOME/.travis/travis.sh" ] && source "$HOME/.travis/travis.sh"
-
-# Heroku Client
-[[ -d /usr/local/heroku/bin ]] && export PATH="/usr/local/heroku/bin:$PATH"
 
 # FZF - Shell Fuzzy Finder
 if [[ -f ~/.fzf.zsh ]]; then
@@ -100,10 +65,6 @@ fi
 if (( ${+commands[doctl]} )); then
   source <(doctl completion zsh) &!
 fi
-
-#if (( ${+commands[pyenv-virtualenv-init]} )); then
-  #eval "$(pyenv virtualenv-init -)"
-#fi
 
 if (( ${+commands[jenv]} )); then
   eval "$(jenv init -)"
@@ -134,9 +95,6 @@ if [[ -d "$HOME/workspace/gocode" ]]; then
   export GOPATH="$HOME/workspace/gocode"
   export PATH="$PATH:$HOME/workspace/gocode/bin"
 fi
-
-# added by travis gem
-[ -f ${HOME}/.travis/travis.sh ] && source ${HOME}/.travis/travis.sh
 
 function docker-env {
   docker-machine start $1

@@ -74,12 +74,6 @@ export LC_NUMERIC="pt_BR.UTF-8"
 export LC_TIME="pt_BR.UTF-8"
 export LC_ALL=
 
-if [[ "$OSTYPE" == darwin* ]]; then
-  export RBENV_ROOT=/usr/local/var/rbenv
-else
-  export RBENV_ROOT=$HOME/.rbenv
-fi
-
 site_functions_path=/usr/local/share/zsh/site-functions
 
 # JDK
@@ -107,11 +101,19 @@ export PYSPARK_PYTHON=python3
 # FindBugs
 [[ -d /usr/local/opt/findbugs ]] && export FINDBUGS_HOME=/usr/local/opt/findbugs
 
+# rbenv
+if [[ "$OSTYPE" == darwin* ]]; then
+  export RBENV_ROOT=/usr/local/var/rbenv
+else
+  export RBENV_ROOT=$HOME/.rbenv
+fi
+
 # pyenv
 [[ -d /usr/local/var/pyenv ]] && export PYENV_ROOT=/usr/local/var/pyenv
+[[ -d "$HOME/.pyenv" ]] && export PYENV_ROOT="$HOME/.pyenv"
 
 # Heroku Client
 [[ -d /usr/local/heroku/bin ]] && export PATH="/usr/local/heroku/bin:$PATH"
 
 # Rust Cargo
-export PATH="$HOME/.cargo/bin:$PATH"
+[[ -d "$HOME/.cargo" ]] && export PATH="$HOME/.cargo/bin:$PATH"

@@ -45,6 +45,7 @@ typeset -gU cdpath fpath mailpath path
 path=(
   ./bin
   $HOME/{bin,.local/bin,.iterm2}
+  "$HOME/Library/Application Support/Coursier/bin"
   /usr/local/{bin,sbin}
   $path
 )
@@ -117,3 +118,9 @@ fi
 
 # Rust Cargo
 [[ -d "$HOME/.cargo" ]] && export PATH="$HOME/.cargo/bin:$PATH"
+
+# Use Python 3 in Google Cloud cli
+export CLOUDSDK_PYTHON=python3
+
+# added by Snowflake SnowSQL installer v1.2
+export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH

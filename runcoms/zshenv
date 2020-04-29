@@ -130,3 +130,8 @@ fi
 
 # No beeps
 setopt NO_BEEP
+
+# Link ruby-build with Homebrew OpenSSL
+if [[ "$OSTYPE" == darwin* ]]; then
+  export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl)"
+fi

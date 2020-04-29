@@ -13,7 +13,7 @@
     zcompile "$zcompdump"
   fi
 
-  [[ "$OSTYPE" == darwin* ]] && update-system-env
+  [[ "$OSTYPE" == darwin* ]] && [[ $+commands[update-system-env] ]] && update-system-env
 } &!
 
 if [[ "$PROFILE_STARTUP" == true ]]; then

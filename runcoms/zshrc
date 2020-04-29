@@ -158,5 +158,11 @@ function install_macos_headers() {
     -target /
 }
 
+function install_coursier() {
+  curl -Lo /usr/local/bin/cs https://git.io/coursier-cli-macos &&
+    chmod +x /usr/local/bin/cs &&
+    (xattr -d com.apple.quarantine /usr/local/bin/cs || true)
+}
+
 # Load local zshrc
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"

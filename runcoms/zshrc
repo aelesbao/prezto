@@ -35,6 +35,7 @@ alias gr='/usr/local/bin/git rebase'
 alias gri='/usr/local/bin/git rebase --interactive'
 
 alias dc='docker-compose'
+alias tf="${commands[terragrunt]:-terraform}"
 
 alias pwsafe=' pwsafe'
 alias cdgr='cd $(git-root)'

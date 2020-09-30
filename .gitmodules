@@ -33,3 +33,6 @@
 	path = modules/prompt/external/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
 	shallow = true
+[submodule "modules/ipfs/external"]
+	path = modules/ipfs/external
+	url = https://github.com/hellounicorn/zsh-ipfs

@@ -32,24 +32,21 @@ zstyle ':prezto:load' zfunction 'zargs' 'zmv'
 zstyle ':prezto:load' pmodule \
   'environment' \
   'terminal' \
+  'prompt' \
   'editor' \
   'history' \
   'directory' \
   'spectrum' \
   'utility' \
   'completion' \
-  'osx' \
-  'tmux' \
-  'rsync' \
-  'git' \
-  'ruby' \
-  'python' \
   'history-substring-search' \
   'syntax-highlighting' \
   'autosuggestions' \
+  'git' \
+  'osx' \
   'fasd' \
+  'rsync' \
   'ipfs' \
-  'prompt' \
   'docker' \
   'databricks'
 

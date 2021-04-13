@@ -109,6 +109,8 @@ else
   export RBENV_ROOT=$HOME/.rbenv
 fi
 
+export BAT_THEME='TwoDark'
+
 # pyenv
 [[ -d /usr/local/var/pyenv ]] && export PYENV_ROOT=/usr/local/var/pyenv
 [[ -d "$HOME/.pyenv" ]] && export PYENV_ROOT="$HOME/.pyenv"

@@ -83,7 +83,7 @@ if (( ${+commands[direnv]} )); then
 fi
 
 # iTerm 2 Shell Integration
-[[ -f "$HOME/.iterm2_shell_integration.zsh" ]] && source "$HOME/.iterm2_shell_integration.zsh"
+[[ -f "$HOME/.iterm2_shell_integration.zsh" ]] && [[ $TERM -ne "xterm-kitty" ]] && source "$HOME/.iterm2_shell_integration.zsh"
 
 [[ -d "$HOME/.nvm" ]] && export NVM_DIR="$HOME/.nvm"
 function nvm-enable {

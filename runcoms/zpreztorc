@@ -38,8 +38,6 @@ zstyle ':prezto:load' pmodule \
   'history' \
   'directory' \
   'kitty' \
-  'utility' \
-  'completion' \
   'history-substring-search' \
   'syntax-highlighting' \
   'autosuggestions' \
@@ -48,9 +46,12 @@ zstyle ':prezto:load' pmodule \
   'fasd' \
   'rsync' \
   'java' \
+  'rust' \
   'ipfs' \
   'docker' \
-  'databricks'
+  'databricks' \
+  'utility' \
+  'completion'
 
 #
 # Autosuggestions

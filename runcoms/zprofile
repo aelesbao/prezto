@@ -118,9 +118,6 @@ export BAT_THEME='TwoDark'
 # Heroku Client
 [[ -d /usr/local/heroku/bin ]] && export PATH="/usr/local/heroku/bin:$PATH"
 
-# Rust Cargo
-[[ -d "$HOME/.cargo" ]] && export PATH="$HOME/.cargo/bin:$PATH"
-
 # Use Python 3 in Google Cloud cli
 export CLOUDSDK_PYTHON=python3
 

@@ -36,3 +36,6 @@
 [submodule "modules/ipfs/external"]
 	path = modules/ipfs/external
 	url = https://github.com/hellounicorn/zsh-ipfs
+[submodule "modules/java/external"]
+	path = modules/java/external
+	url = git://github.com/shihyuho/zsh-jenv-lazy.git

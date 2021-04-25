@@ -39,3 +39,6 @@
 [submodule "modules/java/external"]
 	path = modules/java/external
 	url = git://github.com/shihyuho/zsh-jenv-lazy.git
+[submodule "modules/autocomplete/external"]
+	path = modules/autocomplete/external
+	url = https://github.com/marlonrichert/zsh-autocomplete.git

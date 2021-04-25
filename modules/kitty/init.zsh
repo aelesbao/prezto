@@ -10,9 +10,6 @@ if [[ "$TERM" == 'dumb' ]]; then
   return 1
 fi
 
-# Add completions to $fpath.
-fpath=("${0:h}/functions" $fpath)
-
 function k-remote() {
   kitty -o allow_remote_control=yes &
 }

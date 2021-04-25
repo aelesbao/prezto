@@ -19,7 +19,7 @@ zstyle ':prezto:*:*' color 'yes'
 zstyle ':prezto:load' pmodule-dirs $HOME/.zprezto-contrib
 
 # Allow module overrides when pmodule-dirs causes module name collisions
-# zstyle ':prezto:load' pmodule-allow-overrides 'yes'
+zstyle ':prezto:load' pmodule-allow-overrides 'no'
 
 # Set the Zsh modules to load (man zshmodules).
 zstyle ':prezto:load' zmodule 'attr' 'stat' 'sched'
@@ -47,6 +47,7 @@ zstyle ':prezto:load' pmodule \
   'osx' \
   'fasd' \
   'rsync' \
+  'java' \
   'ipfs' \
   'docker' \
   'databricks'

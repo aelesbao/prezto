@@ -111,7 +111,12 @@ unset path_file
 
 # Add Homebrew completions
 if (( ${+commands[brew]} )); then
-  fpath+=($(brew --prefix)/share/zsh/site-functions)
+  #fpath+=($(brew --prefix)/share/zsh/site-functions)
+fi
+
+# Customize LS_COLORS
+if (( $+commands[vivid] )); then
+  export LS_COLORS="$(vivid generate jellybeans)"
 fi
 
 #
@@ -133,5 +138,5 @@ setopt NO_BEEP
 
 # Link ruby-build with Homebrew OpenSSL
 if [[ "$OSTYPE" == darwin* ]]; then
-  export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl)"
+  #export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl)"
 fi

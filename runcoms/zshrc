@@ -11,9 +11,12 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+#
 # Customize to your needs...
 #
-stty -ixon # set the options for a terminal device interface
+
+# set the options for a terminal device interface
+stty -ixon
 
 # history ignores lines starting with white spaces
 setopt HIST_IGNORE_SPACE
@@ -22,19 +25,22 @@ setopt HIST_IGNORE_SPACE
 bindkey ';5D' emacs-backward-word
 bindkey ';5C' emacs-forward-word
 
+#
 # Aliases
+#
 (( $+commands[nvim] )) && alias vim='nvim'
 (( $+commands[hub] )) && alias git='hub'
 (( $+commands[trash] )) && alias rm='trash'
 (( $+commands[xh] )) && alias http='xh'
 (( $+commands[exa] )) && alias exa='exa -lha'
+(( $+commands[lsd] )) && alias ls='lsd'
 
 alias resource="source ${HOME}/.zshrc"
 
 alias gc='git cis'
-alias ghb='hub browse'
-alias gr='/usr/local/bin/git rebase'
-alias gri='/usr/local/bin/git rebase --interactive'
+alias ghb='git browse'
+alias gr='git rebase'
+alias gri='git rebase --interactive'
 
 alias dc='docker-compose'
 alias tf="${commands[terragrunt]:-terraform}"
@@ -44,6 +50,7 @@ alias cdgr='cd $(git-root)'
 alias psg='procs --tree'
 alias backup='rsync -Pha'
 alias date-iso='date +%Y-%m-%dT%H:%M:%S%z'
+
 if [[ "$OSTYPE" == darwin* ]]; then
   alias list-open-ports='lsof -Pn -i4'
 fi
@@ -51,11 +58,14 @@ fi
 alias youtube-dl-mp3='youtube-dl -x --audio-format mp3 --audio-quality 320K'
 alias asciicast2gif='docker run --rm -v $PWD:/data asciinema/asciicast2gif'
 
-# Solarized dir_colors
-[[ -f /etc/dir_colors ]] && eval `dircolors /etc/dir_colors`
+#
+# Hooks and Completions
+#
 
-# Travis CLI
-[ -f "$HOME/.travis/travis.sh" ] && source "$HOME/.travis/travis.sh"
+# direnv
+if (( ${+commands[direnv]} )); then
+  eval "$(direnv hook zsh)"
+fi
 
 # FZF - Shell Fuzzy Finder
 if [[ -f ~/.fzf.zsh ]]; then
@@ -65,32 +75,25 @@ if [[ -f ~/.fzf.zsh ]]; then
   source ~/.fzf.zsh
 fi
 
+# kubectl
 if (( ${+commands[kubectl]} )); then
-  source <(kubectl completion zsh) &!
+  function kubectl-completion() { source <(kubectl completion zsh) }
 fi
 
-if (( ${+commands[doctl]} )); then
-  source <(doctl completion zsh) &!
-fi
+# DigitalOcean CLI
+#if (( ${+commands[doctl]} )); then
+  #source <(doctl completion zsh) &!
+#fi
 
-if (( ${+commands[jenv]} )); then
-  eval "$(jenv init -)"
-fi
-
-GCLOUD_SDK_HOME="/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk"
-if [[ -d "${GCLOUD_SDK_HOME}" ]]; then
-  source "${GCLOUD_SDK_HOME}/path.zsh.inc"
-  source "${GCLOUD_SDK_HOME}/completion.zsh.inc"
-fi
-
-if (( ${+commands[direnv]} )); then
-  eval "$(direnv hook zsh)"
-fi
+#GCLOUD_SDK_HOME="/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk"
+#if [[ -d "${GCLOUD_SDK_HOME}" ]]; then
+  #source "${GCLOUD_SDK_HOME}/path.zsh.inc"
+  #source "${GCLOUD_SDK_HOME}/completion.zsh.inc"
+#fi
 
 # iTerm 2 Shell Integration
 [[ -f "$HOME/.iterm2_shell_integration.zsh" ]] && [[ $TERM -ne "xterm-kitty" ]] && source "$HOME/.iterm2_shell_integration.zsh"
 
-[[ -d "$HOME/.nvm" ]] && export NVM_DIR="$HOME/.nvm"
 function nvm-enable {
   if [[ "$OSTYPE" == darwin* ]]; then
     nvm_prefix=$(brew --prefix nvm)
@@ -148,9 +151,15 @@ function update-system-env {
 }
 
 function zupdate() {
+  set -e
+
   git -C "${HOME}/.zprezto" stash -u \
     && git -C "${HOME}/.zprezto" pull --rebase --prune \
     && git -C "${HOME}/.zprezto" stash pop
+
+  git -C "${HOME}/.zprezto/contrib" stash -u \
+    && git -C "${HOME}/.zprezto/contrib" pull --rebase --prune \
+    && git -C "${HOME}/.zprezto/contrib" stash pop
 }
 
 function notify {
@@ -158,13 +167,13 @@ function notify {
   say "$1"
 }
 
-function install_macos_headers() {
+function install-macos-headers() {
   sudo installer \
     -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg \
     -target /
 }
 
-function install_coursier() {
+function install-coursier() {
   curl -Lo /usr/local/bin/cs https://git.io/coursier-cli-macos &&
     chmod +x /usr/local/bin/cs &&
     (xattr -d com.apple.quarantine /usr/local/bin/cs || true)

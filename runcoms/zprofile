@@ -77,9 +77,6 @@ export LC_ALL=
 
 site_functions_path=/usr/local/share/zsh/site-functions
 
-# JDK
-[[ -x /usr/libexec/java_home ]] && export JAVA_HOME=`/usr/libexec/java_home`
-
 # Gradle
 [[ -d /usr/local/opt/gradle ]] && export GRADLE_HOME=/usr/local/opt/gradle/libexec
 
@@ -102,11 +99,14 @@ export PYSPARK_PYTHON=python3
 # FindBugs
 [[ -d /usr/local/opt/findbugs ]] && export FINDBUGS_HOME=/usr/local/opt/findbugs
 
+# nvm
+[[ -d "$HOME/.nvm" ]] && export NVM_DIR="$HOME/.nvm"
+
 # rbenv
-if [[ "$OSTYPE" == darwin* ]]; then
-  export RBENV_ROOT=/usr/local/var/rbenv
-else
+if [[ -d "$HOME/.rbenv" ]]; then
   export RBENV_ROOT=$HOME/.rbenv
+elif [[ "$OSTYPE" == darwin* ]]; then
+  export RBENV_ROOT=/usr/local/var/rbenv
 fi
 
 export BAT_THEME='TwoDark'

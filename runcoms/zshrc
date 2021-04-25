@@ -26,6 +26,8 @@ bindkey ';5C' emacs-forward-word
 (( $+commands[nvim] )) && alias vim='nvim'
 (( $+commands[hub] )) && alias git='hub'
 (( $+commands[trash] )) && alias rm='trash'
+(( $+commands[xh] )) && alias http='xh'
+(( $+commands[exa] )) && alias exa='exa -lha'
 
 alias resource="source ${HOME}/.zshrc"
 
@@ -39,9 +41,12 @@ alias tf="${commands[terragrunt]:-terraform}"
 
 alias pwsafe=' pwsafe'
 alias cdgr='cd $(git-root)'
-alias psg='ps aux | grep -i'
+alias psg='procs --tree'
 alias backup='rsync -Pha'
 alias date-iso='date +%Y-%m-%dT%H:%M:%S%z'
+if [[ "$OSTYPE" == darwin* ]]; then
+  alias list-open-ports='lsof -Pn -i4'
+fi
 
 alias youtube-dl-mp3='youtube-dl -x --audio-format mp3 --audio-quality 320K'
 alias asciicast2gif='docker run --rm -v $PWD:/data asciinema/asciicast2gif'

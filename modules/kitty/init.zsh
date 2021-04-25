@@ -34,6 +34,6 @@ function k-set-theme() {
     exit 1
   fi
 
-  ln -sf "$theme" ~/.config/kitty/theme.conf
+  ln -sf "$theme" "$HOME/.config/kitty/theme.conf"
 }
 

@@ -105,7 +105,7 @@ fi
 #fi
 
 # iTerm 2 Shell Integration
-[[ -f "$HOME/.iterm2_shell_integration.zsh" ]] && [[ $TERM -ne "xterm-kitty" ]] && source "$HOME/.iterm2_shell_integration.zsh"
+[[ -f "$HOME/.iterm2_shell_integration.zsh" && "$TERM" != "xterm-kitty" ]] && source "$HOME/.iterm2_shell_integration.zsh"
 
 function nvm-enable {
   if [[ "$OSTYPE" == darwin* ]]; then

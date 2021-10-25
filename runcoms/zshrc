@@ -45,8 +45,9 @@ bindkey ';5C' emacs-forward-word
 (( $+commands[trash] )) && alias rm='trash'
 (( $+commands[xh] )) && alias http='xh'
 (( $+commands[exa] )) && alias exa='exa -lha'
-(( $+commands[lsd] )) && alias ls='lsd'
-(( $+commands[lsd] )) && alias tree='lsd --tree'
+(( $+commands[lsd] )) && alias ls='lsd --blocks=permission,date,size,name'
+(( $+commands[lsd] )) && alias tree='ls --tree'
+(( $+commands[procs] )) && alias psg='procs' || alias psg='ps aux | grep '
 
 alias resource="source ${HOME}/.zshrc"
 
@@ -54,15 +55,18 @@ alias gc='git cis'
 alias ghb='git browse'
 alias gr='git rebase'
 alias gri='git rebase --interactive'
+alias cdgr='cd $(git-root)'
 
 alias dc='docker-compose'
-alias tf="${commands[terragrunt]:-terraform}"
+(( $+commands[terragrunt] )) && alias tf="terragrunt" || alias tf="terraform"
+(( $+commands[subkey] )) || alias subkey="docker run --name subkey --rm parity/subkey"
 
 alias pwsafe=' pwsafe'
-alias cdgr='cd $(git-root)'
-alias psg='procs --tree'
 alias backup='rsync -Pha'
 alias date-iso='date +%Y-%m-%dT%H:%M:%S%z'
+
+alias to-lower='tr "[:upper:]" "[:lower:]"'
+alias to-upper='tr "[:lower:]" "[:upper:]"'
 
 if [[ "$OSTYPE" == darwin* ]]; then
   alias list-open-ports='lsof -Pn -i4'
@@ -135,7 +139,8 @@ function docker-env {
 }
 
 function docker-clean {
-  docker ps -a | grep 'ago' | awk '{print $1}' | xargs docker rm
+  docker ps -a --quiet -f 'status=created' -f 'status=restarting' -f 'status=removing' -f 'status=paused' -f 'status=exited' -f 'status=dead' | \
+    xargs -I {} docker rm {}
   docker volume prune
   docker images | grep '<none>' | awk '{print $3}' | xargs docker rmi
 }

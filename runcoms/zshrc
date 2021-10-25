@@ -209,3 +209,5 @@ function install-coursier() {
 
 # Load local zshrc
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
+
+autoload -U +X bashcompinit && bashcompinit

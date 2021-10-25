@@ -33,12 +33,10 @@ zstyle ':prezto:load' pmodule \
   'environment' \
   'terminal' \
   'spectrum' \
-  'prompt' \
   'editor' \
   'history' \
   'directory' \
   'kitty' \
-  'history-substring-search' \
   'syntax-highlighting' \
   'autosuggestions' \
   'git' \
@@ -51,7 +49,10 @@ zstyle ':prezto:load' pmodule \
   'docker' \
   'databricks' \
   'utility' \
-  'completion'
+  'completion' \
+  'history-substring-search' \
+  'prompt'
+
 
 #
 # Autosuggestions

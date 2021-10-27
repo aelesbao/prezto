@@ -211,3 +211,5 @@ function install-coursier() {
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
 
 autoload -U +X bashcompinit && bashcompinit
+
+if [[ -x /usr/local/bin/monk ]]; then complete -o nospace -C /usr/local/bin/monk monk; fi

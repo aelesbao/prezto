@@ -33,7 +33,7 @@ bindkey ';5C' emacs-forward-word
 (( $+commands[trash] )) && alias rm='trash'
 (( $+commands[xh] )) && alias http='xh'
 (( $+commands[exa] )) && alias exa='exa -lha'
-(( $+commands[lsd] )) && alias ls='lsd --blocks=permission,date,size,name'
+(( $+commands[lsd] )) && alias ls='lsd --group-dirs=first --blocks=permission,date,size,name'
 (( $+commands[lsd] )) && alias tree='ls --tree'
 (( $+commands[procs] )) && alias psg='procs' || alias psg='ps aux | grep '
 

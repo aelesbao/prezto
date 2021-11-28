@@ -43,11 +43,10 @@ zstyle ':prezto:load' pmodule \
   'osx' \
   'fasd' \
   'rsync' \
-  'java' \
+  'node' \
   'rust' \
   'ipfs' \
   'docker' \
-  'databricks' \
   'utility' \
   'completion' \
   'history-substring-search' \

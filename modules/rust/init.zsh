@@ -18,6 +18,11 @@ if [[ -d "${CARGO_HOME}" ]]; then
   path+=("${CARGO_HOME}/bin")
 fi
 
+# rustc wrapper
+if (( $+commands[sccache] )); then
+  export RUSTC_WRAPPER="$(which sccache)"
+fi
+
 #
 # Completions
 #

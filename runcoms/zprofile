@@ -119,7 +119,7 @@ export BAT_THEME='TwoDark'
 [[ -d /usr/local/heroku/bin ]] && export PATH="/usr/local/heroku/bin:$PATH"
 
 # Docker Rootless mode
-[[ -S /run/user/1000/docker.sock ]] && export DOCKER_HOST=unix:///run/user/1000/docker.sock
+[[ -S "$XDG_RUNTIME_DIR/docker.sock" ]] && export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/docker.sock"
 
 # Use Python 3 in Google Cloud cli
 export CLOUDSDK_PYTHON=python3

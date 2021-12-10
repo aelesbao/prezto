@@ -50,8 +50,17 @@ alias dc='docker-compose'
 (( $+commands[subkey] )) || alias subkey="docker run --name subkey --rm parity/subkey"
 
 alias pwsafe=' pwsafe'
-alias backup='rsync -Pha'
 alias date-iso='date +%Y-%m-%dT%H:%M:%S%z'
+alias backup='rsync -Phamuzv \
+  --exclude "*~" \
+  --exclude "*.swp" \
+  --exclude "*.DS_Store*" \
+  --exclude ".Spotlight-V100" \
+  --exclude ".Trashes" \
+  --exclude "ehthumbs.db" \
+  --exclude "Thumbs.db" \
+  --exclude "lost+found"'
+
 
 alias to-lower='tr "[:upper:]" "[:lower:]"'
 alias to-upper='tr "[:lower:]" "[:upper:]"'

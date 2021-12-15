@@ -16,7 +16,9 @@ fi
 #
 
 # set the options for a terminal device interface
-stty -ixon
+if (( $+commands[stty] )); then
+  stty -ixon
+fi
 
 # history ignores lines starting with white spaces
 setopt HIST_IGNORE_SPACE

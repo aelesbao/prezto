@@ -75,7 +75,7 @@ export LC_NUMERIC="pt_BR.UTF-8"
 export LC_TIME="pt_BR.UTF-8"
 export LC_ALL=
 
-site_functions_path=/usr/local/share/zsh/site-functions
+[[ -d /usr/local/share/zsh/site-functions ]] && site_functions_path=/usr/local/share/zsh/site-functions
 
 # Gradle
 [[ -d /usr/local/opt/gradle ]] && export GRADLE_HOME=/usr/local/opt/gradle/libexec
@@ -109,6 +109,7 @@ elif [[ "$OSTYPE" == darwin* ]]; then
   export RBENV_ROOT=/usr/local/var/rbenv
 fi
 
+# bat
 export BAT_THEME='TwoDark'
 
 # pyenv
@@ -123,6 +124,3 @@ export BAT_THEME='TwoDark'
 
 # Use Python 3 in Google Cloud cli
 export CLOUDSDK_PYTHON=python3
-
-# added by Snowflake SnowSQL installer v1.2
-export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH

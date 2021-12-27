@@ -95,7 +95,7 @@ function prompt_aelesbao_setup {
   zstyle ':vcs_info:*' debug false
 
   # Define prompts.
-  PROMPT='${SSH_TTY:+"%F{9}%n%f%F{7}@%f%F{3}%m%f:"}%b%f${vcs_info_msg_0_:-${_prompt_aelesbao_pwd}}${vcs_info_msg_1_%:.}${vcs_info_msg_2_} %(!.%F{red}.%f)» %f'
+  PROMPT='${SSH_TTY:+"%f%F{250}%n%f%F{white}@%f%F{141}%m%f:"}%b%f${vcs_info_msg_0_:-${_prompt_aelesbao_pwd}}${vcs_info_msg_1_%:.}${vcs_info_msg_2_} %(!.%F{red}.%f)» %f'
   PROMPT2='%b%F{white}%_ (!.%F{red}.%f)» %f» '
 }
 

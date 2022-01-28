@@ -49,8 +49,7 @@ zstyle ':prezto:load' pmodule \
   'docker' \
   'utility' \
   'completion' \
-  'history-substring-search' \
-  'prompt'
+  'history-substring-search'
 
 
 #

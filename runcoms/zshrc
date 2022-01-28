@@ -15,6 +15,8 @@ fi
 # Customize to your needs...
 #
 
+autoload -U +X bashcompinit && bashcompinit
+
 # set the options for a terminal device interface
 if (( $+commands[stty] )); then
   stty -ixon
@@ -96,8 +98,10 @@ if [[ -f ~/.fzf.zsh ]]; then
   source ~/.fzf.zsh
 fi
 
+if is-callable starship; then eval "$(starship init zsh)"; fi
+
 # kubectl
-if (( ${+commands[kubectl]} )); then
+if is-callable kubectl; then
   function kubectl-completion() { source <(kubectl completion zsh) }
 fi
 
@@ -119,6 +123,8 @@ fi
 if [[ "$TERM" == "xterm-kitty" ]]; then
   alias icat='kitty kitten icat'
 fi
+
+if is-callable monk; then complete -o nospace -C monk monk; fi
 
 function nvm-enable {
   if [[ "$OSTYPE" == darwin* ]]; then
@@ -208,7 +214,3 @@ function install-coursier() {
 
 # Load local zshrc
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
-
-autoload -U +X bashcompinit && bashcompinit
-
-if [[ -x /usr/local/bin/monk ]]; then complete -o nospace -C /usr/local/bin/monk monk; fi

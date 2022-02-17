@@ -212,5 +212,10 @@ function install-coursier() {
     (xattr -d com.apple.quarantine /usr/local/bin/cs || true)
 }
 
+function kitty-theme() {
+  kitty +kitten themes --reload-in all
+  [[ -f ~/.config/kitty/kitty.conf.bak ]] && mv ~/.config/kitty/kitty.conf.bak ~/.config/kitty/kitty.conf
+}
+
 # Load local zshrc
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"

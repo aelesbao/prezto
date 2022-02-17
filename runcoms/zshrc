@@ -195,11 +195,6 @@ function zupdate() {
     && git -C "${HOME}/.zprezto/contrib" stash pop
 }
 
-function notify {
-  osascript -e "display notification \"$1\""
-  say "$1"
-}
-
 function install-macos-headers() {
   sudo installer \
     -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg \
@@ -215,6 +210,10 @@ function install-coursier() {
 function kitty-theme() {
   kitty +kitten themes --reload-in all
   [[ -f ~/.config/kitty/kitty.conf.bak ]] && mv ~/.config/kitty/kitty.conf.bak ~/.config/kitty/kitty.conf
+}
+
+function yadm-prezto() {
+  yadm add ~/.zprezto && yadm cis -m 'update prezto'
 }
 
 # Load local zshrc

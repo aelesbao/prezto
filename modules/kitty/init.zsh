@@ -10,27 +10,20 @@ if [[ "$TERM" == 'dumb' ]]; then
   return 1
 fi
 
-function k-remote() {
+# Kitty aliases
+if [[ "$TERM" == "xterm-kitty" ]]; then
+  alias icat='kitty kitten icat'
+
+  # Fix for broken SSH output when using Kitty
+  alias ssh='TERM=xterm-256color ssh'
+fi
+
+function kitty-set-theme() {
+  kitty +kitten themes --reload-in all
+  [[ -f ~/.config/kitty/kitty.conf.bak ]] && mv ~/.config/kitty/kitty.conf.bak ~/.config/kitty/kitty.conf
+}
+
+function kitty-remote() {
   kitty -o allow_remote_control=yes &
-}
-
-function k-test-theme() {
-  local theme="$1"
-  if ! [[ -f "$theme" ]]; then
-    echo "Theme file not found: $theme"
-    exit 1
-  fi
-
-  kitty @ set-colors -a -c "$theme"
-}
-
-function k-set-theme() {
-  local theme="$1"
-  if ! [[ -f "$theme" ]]; then
-    echo "Theme file not found: $theme"
-    exit 1
-  fi
-
-  ln -sf "$theme" "$HOME/.config/kitty/theme.conf"
 }
 

@@ -53,5 +53,20 @@ function dkmd {
   popd
 }
 
+# Cleans stopped containers, dangling images, and dettached volumes
+function dkclean {
+  docker ps -a --quiet \
+    -f 'status=created' \
+    -f 'status=restarting' \
+    -f 'status=removing' \
+    -f 'status=paused' \
+    -f 'status=exited' \
+    -f 'status=dead' \
+    | xargs -I {} docker rm {}
+  docker images | grep '<none>' | awk '{print $3}' | xargs docker rmi
+  docker volume prune
+}
+alias docker-clean='echo "Please run dkclean instead"'
+
 # Source module files.
 source "${0:h}/alias.zsh"

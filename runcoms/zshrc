@@ -18,9 +18,7 @@ fi
 autoload -U +X bashcompinit && bashcompinit
 
 # set the options for a terminal device interface
-if (( $+commands[stty] )); then
-  stty -ixon
-fi
+is-callable stty && stty -ixon
 
 # history ignores lines starting with white spaces
 setopt HIST_IGNORE_SPACE
@@ -32,14 +30,24 @@ bindkey ';5C' emacs-forward-word
 #
 # Aliases
 #
-(( $+commands[nvim] )) && alias vim='nvim'
-(( $+commands[hub] )) && alias git='hub'
-(( $+commands[trash] )) && alias rm='trash'
-(( $+commands[xh] )) && alias http='xh'
-(( $+commands[exa] )) && alias exa='exa -lha'
-(( $+commands[lsd] )) && alias ls='lsd --group-dirs=first --blocks=permission,date,size,name'
-(( $+commands[lsd] )) && alias tree='ls --tree'
-(( $+commands[procs] )) && alias psg='procs' || alias psg='ps aux | grep '
+is-callable nvim && alias vim='nvim'
+is-callable hub && alias git='hub'
+is-callable trash && alias rm='trash'
+is-callable xh && alias http='xh'
+is-callable procs && alias psg='procs' || alias psg='ps aux | grep'
+
+if is-callable lsd; then
+  alias ls='lsd --group-dirs=first --blocks=permission,date,size,name'
+  alias tree='ls --tree'
+fi
+
+if is-callable exa; then
+  alias exa='exa --icons --group-directories-first'
+  alias ls='exa'
+  alias la='ll -a'
+  alias l='exa -1a'
+  alias tree='exa --tree'
+fi
 
 alias resource="source ${HOME}/.zshrc"
 
@@ -50,10 +58,12 @@ alias gri='git rebase --interactive'
 alias cdgr='cd $(git-root)'
 
 alias dc='docker-compose'
-(( $+commands[terragrunt] )) && alias tf="terragrunt" || alias tf="terraform"
-(( $+commands[subkey] )) || alias subkey="docker run --name subkey --rm parity/subkey"
 
-alias pwsafe=' pwsafe'
+is-callable terragrunt && alias tf="terragrunt" || alias tf="terraform"
+is-callable subkey || alias subkey="docker run --name subkey --rm -it parity/subkey"
+
+is-callable pwsafe && alias pwsafe=' pwsafe'
+
 alias date-iso='date +%Y-%m-%dT%H:%M:%S%z'
 alias backup='rsync -Phamuzv \
   --exclude "*~" \
@@ -74,89 +84,66 @@ if [[ "$OSTYPE" == darwin* ]]; then
 fi
 
 alias youtube-dl-mp3='youtube-dl -x --audio-format mp3 --audio-quality 320K'
-alias asciicast2gif='docker run --rm -v $PWD:/data asciinema/asciicast2gif'
-
-# Fix for broken SSH output when using Kitty
-if [[ "$TERM" != xterm-256color ]]; then
-  alias ssh='TERM=xterm-256color ssh'
-fi
+alias asciicast2gif='docker run --name asciicast2gif --rm -v $PWD:/data asciinema/asciicast2gif'
 
 #
 # Hooks and Completions
 #
 
 # direnv
-if (( ${+commands[direnv]} )); then
-  eval "$(direnv hook zsh)"
-fi
+is-callable direnv && eval "$(direnv hook zsh)"
 
 # FZF - Shell Fuzzy Finder
 if [[ -f ~/.fzf.zsh ]]; then
-  # Setting ag as the default source for fzf. This will make fzf respect your .gitignore
   export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
   source ~/.fzf.zsh
 fi
 
-if is-callable starship; then eval "$(starship init zsh)"; fi
+# Start starship
+is-callable starship && eval "$(starship init zsh)"
 
-# kubectl
-if is-callable kubectl; then
-  function kubectl-completion() { source <(kubectl completion zsh) }
-fi
+# Monk
+is-callable monk && complete -o nospace -C monk monk
 
 # DigitalOcean CLI
-#if (( ${+commands[doctl]} )); then
-  #source <(doctl completion zsh) &!
-#fi
-
-#GCLOUD_SDK_HOME="/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk"
-#if [[ -d "${GCLOUD_SDK_HOME}" ]]; then
-  #source "${GCLOUD_SDK_HOME}/path.zsh.inc"
-  #source "${GCLOUD_SDK_HOME}/completion.zsh.inc"
-#fi
-
-# iTerm2 Shell Integration
-[[ -f "$HOME/.iterm2_shell_integration.zsh" && "$TERM" != "xterm-kitty" ]] && source "$HOME/.iterm2_shell_integration.zsh"
-
-# Kitty aliases
-if [[ "$TERM" == "xterm-kitty" ]]; then
-  alias icat='kitty kitten icat'
+if is-callable doctl; then
+  # Lazy load doctl completion
+  function doctl() {
+    unset -f doctl
+    source <(doctl completion zsh)
+    doctl $@
+  }
 fi
 
-if is-callable monk; then complete -o nospace -C monk monk; fi
+# Google Cloud SDK
+if is-callable gcloud; then
+  # Lazy load gcloud completion
+  function gcloud() {
+    unset -f gcloud
+    GCLOUD_SDK_HOME="/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk"
+    if [[ -d "${GCLOUD_SDK_HOME}" ]]; then
+      source "${GCLOUD_SDK_HOME}/path.zsh.inc"
+      source "${GCLOUD_SDK_HOME}/completion.zsh.inc"
+    fi
+    gcloud $@
+  }
+fi
+
+# iTerm2 Shell Integration
+if [[ -f "$HOME/.iterm2_shell_integration.zsh" && "$TERM" != "xterm-kitty" ]]; then
+  source "$HOME/.iterm2_shell_integration.zsh"
+fi
+
+#
+# Helper functions
+#
 
 function nvm-enable {
   if [[ "$OSTYPE" == darwin* ]]; then
     nvm_prefix=$(brew --prefix nvm)
   fi
   [[ -d $nvm_prefix ]] && source $nvm_prefix/nvm.sh
-}
-
-if [[ -d "$HOME/workspace/go" ]]; then
-  export GOPATH="$HOME/workspace/go"
-  export PATH="$PATH:$HOME/workspace/go/bin"
-fi
-
-function docker-env {
-  docker-machine start $1
-  eval $(docker-machine env $1)
-}
-
-function docker-clean {
-  docker ps -a --quiet -f 'status=created' -f 'status=restarting' -f 'status=removing' -f 'status=paused' -f 'status=exited' -f 'status=dead' | \
-    xargs -I {} docker rm {}
-  docker volume prune
-  docker images | grep '<none>' | awk '{print $3}' | xargs docker rmi
-}
-
-function kafka-server {
-  JAVA_HOME="$(/usr/libexec/java_home -v 1.7)" kafka-server-start.sh /usr/local/etc/kafka/server.properties
-}
-
-function start-datomic-console {
-  DB=$1
-  datomic-console -p 3000 $DB datomic:dev://localhost:4334/$DB
 }
 
 # Installs completions that were not auto installed
@@ -190,26 +177,11 @@ function zupdate() {
     && git -C "${HOME}/.zprezto" pull --rebase --prune \
     && git -C "${HOME}/.zprezto" stash pop
 
-  git -C "${HOME}/.zprezto/contrib" stash -u \
-    && git -C "${HOME}/.zprezto/contrib" pull --rebase --prune \
-    && git -C "${HOME}/.zprezto/contrib" stash pop
-}
-
-function install-macos-headers() {
-  sudo installer \
-    -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg \
-    -target /
-}
-
-function install-coursier() {
-  curl -Lo /usr/local/bin/cs https://git.io/coursier-cli-macos &&
-    chmod +x /usr/local/bin/cs &&
-    (xattr -d com.apple.quarantine /usr/local/bin/cs || true)
-}
-
-function kitty-theme() {
-  kitty +kitten themes --reload-in all
-  [[ -f ~/.config/kitty/kitty.conf.bak ]] && mv ~/.config/kitty/kitty.conf.bak ~/.config/kitty/kitty.conf
+  if [[ -d ${HOME}/.zprezto/contrib ]]; then
+    git -C "${HOME}/.zprezto/contrib" stash -u \
+      && git -C "${HOME}/.zprezto/contrib" pull --rebase --prune \
+      && git -C "${HOME}/.zprezto/contrib" stash pop
+  fi
 }
 
 function yadm-prezto() {

@@ -45,8 +45,10 @@ zstyle ':prezto:load' pmodule \
   'rsync' \
   'node' \
   'rust' \
+  'java' \
   'ipfs' \
   'docker' \
+  'kubernetes' \
   'utility' \
   'completion' \
   'history-substring-search'

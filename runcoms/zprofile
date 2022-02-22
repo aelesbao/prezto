@@ -122,5 +122,11 @@ export BAT_THEME='TwoDark'
 # Docker Rootless mode
 [[ -S "$XDG_RUNTIME_DIR/docker.sock" ]] && export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/docker.sock"
 
+# Go environment
+if [[ -d "$HOME/workspace/go" ]]; then
+  export GOPATH="$HOME/workspace/go"
+  export PATH="$PATH:$HOME/workspace/go/bin"
+fi
+
 # Use Python 3 in Google Cloud cli
 export CLOUDSDK_PYTHON=python3

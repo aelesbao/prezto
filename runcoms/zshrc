@@ -103,6 +103,18 @@ fi
 # Start starship
 is-callable starship && eval "$(starship init zsh)"
 
+local func_path=~/.cache/prezto/site-functions
+
+for cosmos_bin in gaiad akash archwayd; do
+  if is-callable $cosmos_bin && [[ ! -f $func_path/_$cosmos_bin ]]; then
+    $cosmos_bin completion --zsh > $func_path/_$cosmos_bin
+  fi
+done
+
+if is-callable op && [[ ! -f $func_path/_op ]]; then
+  op completion zsh > ~/.cache/prezto/site-functions/_op
+fi
+
 # Monk
 is-callable monk && complete -o nospace -C monk monk
 

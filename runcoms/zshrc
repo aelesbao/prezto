@@ -200,5 +200,10 @@ function yadm-prezto() {
   yadm add ~/.zprezto && yadm cis -m 'update prezto'
 }
 
+function cdtmp() {
+  local TMPDIR="$(mktemp -d)"
+  ${SHELL} -c "cd ${TMPDIR}; ${SHELL}; rm -rf ${TMPDIR}"
+}
+
 # Load local zshrc
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"

@@ -128,5 +128,7 @@ if [[ -d "$HOME/workspace/go" ]]; then
   export PATH="$PATH:$HOME/workspace/go/bin"
 fi
 
+[[ -d ~/.emacs.d/bin ]] && path+=(~/.emacs.d/bin)
+
 # Use Python 3 in Google Cloud cli
 export CLOUDSDK_PYTHON=python3

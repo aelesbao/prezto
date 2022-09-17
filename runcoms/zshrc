@@ -64,6 +64,11 @@ is-callable subkey || alias subkey="docker run --name subkey --rm -it parity/sub
 
 is-callable pwsafe && alias pwsafe=' pwsafe'
 
+is-callable youtube-dl && alias youtube-dl-mp3='youtube-dl -x --audio-format mp3 --audio-quality 320K'
+alias asciicast2gif='docker run --name asciicast2gif --rm -v $PWD:/data asciinema/asciicast2gif'
+
+[[ -x ~/.config/yadm/bootstrap ]] && alias yadm-boot='~/.config/yadm/bootstrap'
+
 alias date-iso='date +%Y-%m-%dT%H:%M:%S%z'
 alias backup='rsync -Phamuzv \
   --exclude "*~" \
@@ -82,9 +87,6 @@ alias to-upper='tr "[:lower:]" "[:upper:]"'
 if [[ "$OSTYPE" == darwin* ]]; then
   alias list-open-ports='lsof -Pn -i4'
 fi
-
-alias youtube-dl-mp3='youtube-dl -x --audio-format mp3 --audio-quality 320K'
-alias asciicast2gif='docker run --name asciicast2gif --rm -v $PWD:/data asciinema/asciicast2gif'
 
 #
 # Hooks and Completions

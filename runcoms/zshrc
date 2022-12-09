@@ -57,7 +57,7 @@ alias gr='git rebase'
 alias gri='git rebase --interactive'
 alias cdgr='cd $(git-root)'
 
-alias dc='docker-compose'
+alias dc='docker compose'
 
 is-callable terragrunt && alias tf="terragrunt" || alias tf="terraform"
 is-callable subkey || alias subkey="docker run --name subkey --rm -it parity/subkey"

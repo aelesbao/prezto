@@ -132,3 +132,5 @@ fi
 
 # Use Python 3 in Google Cloud cli
 export CLOUDSDK_PYTHON=python3
+
+export ARCHWAY_SKIP_VERSION_CHECK=true

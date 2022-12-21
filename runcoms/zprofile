@@ -125,7 +125,7 @@ export BAT_THEME='TwoDark'
 # Go environment
 if [[ -d "$HOME/workspace/go" ]]; then
   export GOPATH="$HOME/workspace/go"
-  export PATH="$PATH:$HOME/workspace/go/bin"
+  export PATH="$PATH:$GOPATH/bin"
 fi
 
 [[ -d ~/.emacs.d/bin ]] && path+=(~/.emacs.d/bin)

@@ -190,8 +190,6 @@ function update-system-env {
 }
 
 function zupdate() {
-  set -e
-
   git -C "${HOME}/.zprezto" stash -u \
     && git -C "${HOME}/.zprezto" pull --rebase --prune \
     && git -C "${HOME}/.zprezto" stash pop

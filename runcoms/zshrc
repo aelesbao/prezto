@@ -151,6 +151,9 @@ if [[ -f "$HOME/.iterm2_shell_integration.zsh" && "$TERM" != "xterm-kitty" ]]; t
   source "$HOME/.iterm2_shell_integration.zsh"
 fi
 
+# Initialize 1Ppassword CLI plugins
+[[ -f ~/.config/op/plugins.sh ]] && source ~/.config/op/plugins.sh
+
 #
 # Helper functions
 #

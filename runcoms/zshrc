@@ -92,7 +92,7 @@ fi
 # Hooks and Completions
 #
 
-add-zsh-hook -Uz chpwd(){ source <(tea -Eds) }  #tea
+#add-zsh-hook -Uz chpwd(){ source <(tea -Eds) }  #tea
 
 # direnv
 is-callable direnv && eval "$(direnv hook zsh)"

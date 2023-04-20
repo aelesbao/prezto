@@ -107,6 +107,9 @@ fi
 # Start starship
 is-callable starship && eval "$(starship init zsh)"
 
+# Load zoxide
+is-callable zoxide && eval "$(zoxide init zsh)"
+
 local func_path=~/.cache/prezto/site-functions
 
 for cosmos_bin in gaiad akash archwayd; do

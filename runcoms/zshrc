@@ -123,6 +123,10 @@ if is-callable op && [[ ! -f $func_path/_op ]]; then
   op completion zsh > ~/.cache/prezto/site-functions/_op
 fi
 
+if is-callable colima && [[ ! -f $func_path/_colima ]]; then
+  colima completion zsh > ~/.cache/prezto/site-functions/_colima
+fi
+
 # Monk
 is-callable monk && complete -o nospace -C monk monk
 

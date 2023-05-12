@@ -1,8 +1,9 @@
+#!/bin/zsh
 #
 # Executes commands at the start of an interactive session.
 #
 # Authors:
-#   Augusto Elesbão <aelesbao@gmail.com>
+#   Augusto Elesbão <aelesbao@users.noreply.github.com>
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 

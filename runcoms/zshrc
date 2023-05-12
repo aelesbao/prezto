@@ -218,5 +218,27 @@ function cdtmp() {
   ${SHELL} -c "cd ${TMPDIR}; ${SHELL}; rm -rf ${TMPDIR}"
 }
 
+# Archway
+if is-callable archwayd; then
+  function gas-prices-estimate() {
+    local node_url="${1}"
+    local node="$([[ -n "$node_url" ]] && echo "--node ${node_url}" || echo "")"
+    archwayd q rewards estimate-fees 1 ${node} --output json | \
+      jq -r '.gas_unit_price | (.amount + .denom)'
+  }
+
+  function arch-config-client() {
+    local chain_id="${1}"
+
+    [[ -f ~/.archway/config/client.${chain_id}.toml ]] || {
+      echo "No client config found for chain ${chain_id}"
+      return 1
+    }
+
+    ln -sf client.${chain_id}.toml ~/.archway/config/client.toml
+    bat ~/.archway/config/client.toml
+  }
+fi
+
 # Load local zshrc
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"

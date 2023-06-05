@@ -36,6 +36,7 @@ is-callable hub && alias git='hub'
 is-callable trash && alias rm='trash'
 is-callable xh && alias http='xh'
 is-callable procs && alias psg='procs' || alias psg='ps aux | grep'
+is-callable delta && alias diff='delta'
 
 if is-callable lsd; then
   alias ls='lsd --group-dirs=first --blocks=permission,date,size,name'

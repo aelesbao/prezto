@@ -142,4 +142,7 @@ fi
 # Use Python 3 in Google Cloud cli
 export CLOUDSDK_PYTHON=python3
 
+# Avoid Homebrew auto-upgrade
+export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=true
+
 export ARCHWAY_SKIP_VERSION_CHECK=true

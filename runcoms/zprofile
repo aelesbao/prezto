@@ -126,15 +126,15 @@ export BAT_THEME='TwoDark'
 [[ -d "$HOME/.pyenv" ]] && export PYENV_ROOT="$HOME/.pyenv"
 
 # Heroku Client
-[[ -d /usr/local/heroku/bin ]] && export PATH="/usr/local/heroku/bin:$PATH"
+[[ -d /usr/local/heroku/bin ]] && path+=("/usr/local/heroku/bin")
 
 # Docker Rootless mode
 [[ -S "$XDG_RUNTIME_DIR/docker.sock" ]] && export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/docker.sock"
 
 # Go environment
-if [[ -d "$HOME/workspace/go" ]]; then
-  export GOPATH="$HOME/workspace/go"
-  export PATH="$PATH:$GOPATH/bin"
+if [[ -d "$HOME/.local/share/go" ]]; then
+  export GOPATH="$HOME/.local/share/go"
+  path+=("$GOPATH/bin")
 fi
 
 [[ -d ~/.emacs.d/bin ]] && path+=(~/.emacs.d/bin)

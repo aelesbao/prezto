@@ -114,9 +114,17 @@ is-callable zoxide && eval "$(zoxide init zsh)"
 
 local func_path=~/.cache/prezto/site-functions
 
-for cosmos_bin in gaiad akash archwayd; do
-  if is-callable $cosmos_bin && [[ ! -f $func_path/_$cosmos_bin ]]; then
-    $cosmos_bin completion --zsh > $func_path/_$cosmos_bin
+typeset -aU cosmos_chains
+cosmos_chains=(
+  akash
+  archwayd
+  gaiad
+  gravity
+  provider-services
+)
+for chain in $cosmos_chains; do
+  if is-callable $chain && [[ ! -f $func_path/_$chain ]]; then
+    $chain completion --zsh > $func_path/_$chain
   fi
 done
 
@@ -130,6 +138,13 @@ fi
 
 # Monk
 is-callable monk && complete -o nospace -C monk monk
+
+# Lazy load archway-cli completion
+function archway() {
+  unset -f archway
+  eval $(archway autocomplete script zsh)
+  archway $@
+}
 
 # DigitalOcean CLI
 if is-callable doctl; then
@@ -239,6 +254,14 @@ if is-callable archwayd; then
     ln -sf client.${chain_id}.toml ~/.archway/config/client.toml
     bat ~/.archway/config/client.toml
   }
+
+  function arch-debug-tx() {
+    archwayd q tx "${1}" | \
+      jq '.events |= (.events | map({ type: .type, attributes: (.attributes | map(.key |= @base64d) | map(.value |= @base64d) | from_entries) }))'
+  }
+  
+  alias arch-chain-id="archway config | jq -r .network.chainId"
+  alias arch-contract-address="archway config | jq -r --arg chainId \$(archway config | jq -r .network.chainId) '[.developer.deployments[] | select(.type == \"instantiate\" and .chainId == \$chainId)] | .[0].address'"
 fi
 
 # Load local zshrc

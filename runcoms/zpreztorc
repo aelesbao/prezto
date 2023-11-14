@@ -50,7 +50,8 @@ zstyle ':prezto:load' pmodule \
   'kubernetes' \
   'utility' \
   'completion' \
-  'history-substring-search'
+  'history-substring-search' \
+  'fasd'
 
 
 #

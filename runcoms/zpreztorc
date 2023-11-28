@@ -52,7 +52,8 @@ zstyle ':prezto:load' pmodule \
   'utility' \
   'completion' \
   'history-substring-search' \
-  'fasd'
+  'fasd' \
+  'starship'
 
 
 #

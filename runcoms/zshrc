@@ -136,6 +136,10 @@ if is-callable colima && [[ ! -f $func_path/_colima ]]; then
   colima completion zsh > ~/.cache/prezto/site-functions/_colima
 fi
 
+if is-callable poetry && [[ ! -f $func_path/_poetry ]]; then
+  poetry completions zsh > ~/.cache/prezto/site-functions/_poetry
+fi
+
 # Monk
 is-callable monk && complete -o nospace -C monk monk
 

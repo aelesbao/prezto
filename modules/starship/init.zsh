@@ -6,6 +6,11 @@
 #   Augusto Elesbão <aelesbao@users.noreply.github.com>
 #
 
+# Return if requirements are not found.
+if [[ "$TERM" == 'dumb' ]] || ! is-callable starship; then
+  return 1
+fi
+
 # find out which distribution we are running on
 LFILE="/etc/*-release"
 MFILE="/System/Library/CoreServices/SystemVersion.plist"
@@ -54,3 +59,7 @@ esac
 
 export STARSHIP_DISTRO="$ICON"
 export STARSHIP_DEVICE="$DEVICE"
+
+# Start starship
+eval "$(starship init zsh)"
+

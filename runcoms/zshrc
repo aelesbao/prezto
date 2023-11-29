@@ -106,9 +106,6 @@ if [[ -f ~/.fzf.zsh ]]; then
   source ~/.fzf.zsh
 fi
 
-# Start starship
-is-callable starship && eval "$(starship init zsh)"
-
 # Load zoxide
 is-callable zoxide && eval "$(zoxide init zsh)"
 
@@ -263,7 +260,7 @@ if is-callable archwayd; then
     archwayd q tx "${1}" | \
       jq '.events |= (.events | map({ type: .type, attributes: (.attributes | map(.key |= @base64d) | map(.value |= @base64d) | from_entries) }))'
   }
-  
+
   alias arch-chain-id="archway config | jq -r .network.chainId"
   alias arch-contract-address="archway config | jq -r --arg chainId \$(archway config | jq -r .network.chainId) '[.developer.deployments[] | select(.type == \"instantiate\" and .chainId == \$chainId)] | .[0].address'"
 fi

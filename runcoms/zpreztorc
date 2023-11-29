@@ -53,8 +53,8 @@ zstyle ':prezto:load' pmodule \
   'completion' \
   'history-substring-search' \
   'fasd' \
-  'tmux' \
-  'starship'
+  'starship' \
+  'tmux'
 
 
 #

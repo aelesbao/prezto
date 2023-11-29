@@ -254,7 +254,7 @@ zstyle ':prezto:module:terminal:tab-title' format '%1~'
 #zstyle ':prezto:module:terminal:tab-title' format '%(4~,%-1~/…/%2/,%3~)'
 
 # Set the terminal multiplexer title format.
-# zstyle ':prezto:module:terminal:multiplexer-title' format '%s'
+zstyle ':prezto:module:terminal:multiplexer-title' format '%s'
 
 #
 # Tmux
@@ -267,7 +267,7 @@ zstyle ':prezto:module:tmux:auto-start' local 'no'
 zstyle ':prezto:module:tmux:auto-start' remote 'yes'
 
 # Enable powerline.
-zstyle ':prezto:module:tmux' powerline 'yes'
+zstyle ':prezto:module:tmux' powerline 'no'
 
 # Integrate with iTerm2.
 zstyle ':prezto:module:tmux:iterm' integrate 'no'

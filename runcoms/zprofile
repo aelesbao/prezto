@@ -116,7 +116,7 @@ elif [[ "$OSTYPE" == darwin* ]]; then
 fi
 
 # bat
-export BAT_THEME='TwoDark'
+export BAT_THEME='Catppuccin-mocha'
 
 # pyenv
 [[ -d /usr/local/var/pyenv ]] && export PYENV_ROOT=/usr/local/var/pyenv

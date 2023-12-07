@@ -39,8 +39,16 @@ fi
 # Editors
 #
 
-export EDITOR='vim -X'
-export VISUAL='vim -X'
+if (( $+commands[nvim] )); then
+  export EDITOR='nvim -X'
+else
+  export EDITOR='vim -X'
+fi
+if (( $+commands[nvim] )); then
+  export VISUAL='nvim -X'
+else
+  export VISUAL='vim -X'
+fi
 export PAGER='less'
 
 #

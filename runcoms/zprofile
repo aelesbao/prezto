@@ -10,8 +10,12 @@
 # Browser
 #
 
-if [[ -z "$BROWSER" && "$OSTYPE" == darwin* ]]; then
-  export BROWSER='open'
+if [[ -z "$BROWSER" ]]; then
+  if [[ "$OSTYPE" == darwin* ]]; then
+    export BROWSER='open'
+  elif [[ "$OSTYPE" == linux* ]]; then
+    export BROWSER='xdg-open'
+  fi
 fi
 
 #
@@ -19,10 +23,18 @@ fi
 #
 
 if [[ -z "$EDITOR" ]]; then
-  export EDITOR='vim -X'
+  if (( $+commands[nvim] )); then
+    export EDITOR='nvim -X'
+  else
+    export EDITOR='vim -X'
+  fi
 fi
 if [[ -z "$VISUAL" ]]; then
-  export VISUAL='vim -X'
+  if (( $+commands[nvim] )); then
+    export VISUAL='nvim -X'
+  else
+    export VISUAL='vim -X'
+  fi
 fi
 if [[ -z "$PAGER" ]]; then
   export PAGER='less'

@@ -31,6 +31,7 @@ bindkey ';5C' emacs-forward-word
 #
 # Aliases
 #
+is-callable yadm && alias y='yadm'
 is-callable nvim && alias vim='nvim'
 is-callable hub && alias git='hub'
 is-callable trash && alias rm='trash'

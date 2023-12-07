@@ -146,8 +146,6 @@ if [[ -d "$HOME/.local/share/go" ]]; then
   path+=("$GOPATH/bin")
 fi
 
-[[ -d ~/.emacs.d/bin ]] && path+=(~/.emacs.d/bin)
-
 # Use Python 3 in Google Cloud cli
 export CLOUDSDK_PYTHON=python3
 

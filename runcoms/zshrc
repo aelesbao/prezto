@@ -100,11 +100,7 @@ fi
 is-callable direnv && eval "$(direnv hook zsh)"
 
 # FZF - Shell Fuzzy Finder
-if [[ -f ~/.fzf.zsh ]]; then
-  export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
-  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-  source ~/.fzf.zsh
-fi
+[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 
 # Load zoxide
 is-callable zoxide && eval "$(zoxide init zsh)"

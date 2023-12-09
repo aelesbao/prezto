@@ -13,9 +13,6 @@ fi
 # Kitty aliases
 if [[ "$TERM" == "xterm-kitty" ]]; then
   alias icat='kitty kitten icat'
-
-  # Fix for broken SSH output when using Kitty
-  alias ssh='TERM=xterm-256color ssh'
 fi
 
 function kitty-set-theme() {

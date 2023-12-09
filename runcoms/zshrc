@@ -172,7 +172,7 @@ if is-callable gcloud; then
 fi
 
 # iTerm2 Shell Integration
-if [[ -f "$HOME/.iterm2_shell_integration.zsh" && "$TERM" != "xterm-kitty" ]]; then
+if [[ -f "$HOME/.iterm2_shell_integration.zsh" && "$TERM_PROGRAM" = "iTerm.app" ]]; then
   source "$HOME/.iterm2_shell_integration.zsh"
 fi
 

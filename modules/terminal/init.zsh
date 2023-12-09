@@ -60,7 +60,7 @@ function _terminal-set-titles-with-command {
     local truncated_cmd="${cmd/(#m)?(#c15,)/${MATCH[1,12]}...}"
     unset MATCH
 
-    if [[ "$TERM" == screen* ]]; then
+    if [[ "$TERM" == (screen*|tmux*) ]]; then
       set-multiplexer-title "$truncated_cmd"
     fi
     set-tab-title "$truncated_cmd"
@@ -78,7 +78,7 @@ function _terminal-set-titles-with-path {
   local truncated_path="${abbreviated_path/(#m)?(#c15,)/...${MATCH[-12,-1]}}"
   unset MATCH
 
-  if [[ "$TERM" == screen* ]]; then
+  if [[ "$TERM" == (screen*|tmux*) ]]; then
     set-multiplexer-title "$truncated_path"
   fi
   set-tab-title "$truncated_path"

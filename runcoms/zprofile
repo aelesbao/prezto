@@ -172,3 +172,5 @@ export CLOUDSDK_PYTHON=python3
 export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=true
 
 export ARCHWAY_SKIP_VERSION_CHECK=true
+
+# vim:ft=zsh

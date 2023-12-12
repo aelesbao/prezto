@@ -267,3 +267,5 @@ fi
 
 # Load local zshrc
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
+
+# vim:ft=zsh

@@ -90,8 +90,12 @@ alias backup='rsync -Phamuzv \
 alias to-lower='tr "[:upper:]" "[:lower:]"'
 alias to-upper='tr "[:lower:]" "[:upper:]"'
 
-if [[ "$OSTYPE" == darwin* ]]; then
+if is-darwin; then
   alias list-open-ports='lsof -Pn -i4'
+fi
+
+if [[ -x ~/.config/tmux/plugins/tmux-ctrlp/bin/ctrlp ]]; then
+  alias t='~/.config/tmux/plugins/tmux-ctrlp/bin/ctrlp'
 fi
 
 #

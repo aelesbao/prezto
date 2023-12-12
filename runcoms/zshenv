@@ -123,8 +123,8 @@ if (( ${+commands[brew]} )); then
 fi
 
 # Customize LS_COLORS
-if (( $+commands[vivid] )); then
-  export LS_COLORS="$(vivid generate jellybeans)"
+if (( ! $+LS_COLORS && ${+commands[vivid]} )); then
+  export LS_COLORS="$(vivid generate catppuccin-mocha)"
 fi
 
 #

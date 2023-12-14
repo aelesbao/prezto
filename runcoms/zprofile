@@ -184,4 +184,5 @@ export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=true
 
 export ARCHWAY_SKIP_VERSION_CHECK=true
 
+[[ -f "$HOME/.zprofile.local" ]] && source "$HOME/.zprofile.local"
 # vim:ft=zsh

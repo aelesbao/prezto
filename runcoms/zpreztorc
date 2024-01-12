@@ -54,7 +54,8 @@ zstyle ':prezto:load' pmodule \
   'history-substring-search' \
   'fasd' \
   'starship' \
-  'tmux'
+  'tmux' \
+  'yabai'
 
 
 #

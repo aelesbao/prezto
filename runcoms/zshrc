@@ -130,19 +130,19 @@ for chain in $cosmos_chains; do
 done
 
 if is-callable op && [[ ! -f $func_path/_op ]]; then
-  op completion zsh > ~/.cache/prezto/site-functions/_op
+  op completion zsh > $func_path/_op
 fi
 
 if is-callable colima && [[ ! -f $func_path/_colima ]]; then
-  colima completion zsh > ~/.cache/prezto/site-functions/_colima
+  colima completion zsh > $func_path/_colima
 fi
 
 if is-callable poetry && [[ ! -f $func_path/_poetry ]]; then
-  poetry completions zsh > ~/.cache/prezto/site-functions/_poetry
+  poetry completions zsh > $func_path/_poetry
 fi
 
 # Monk
-is-callable monk && complete -o nospace -C monk monk
+# is-callable monk && complete -o nospace -C monk monk
 
 # Lazy load archway-cli completion
 function archway() {
@@ -261,12 +261,9 @@ if is-callable archwayd; then
   }
 
   function arch-debug-tx() {
-    archwayd q tx "${1}" | \
-      jq '.events |= (.events | map({ type: .type, attributes: (.attributes | map(.key |= @base64d) | map(.value |= @base64d) | from_entries) }))'
+    local txhash="${1}"
+    archwayd q tx "${txhash}" | jq '.events |= map({ type: .type, attributes: (.attributes | map(.key |= @base64d) | map(.value |= @base64d) | from_entries) })'
   }
-
-  alias arch-chain-id="archway config | jq -r .network.chainId"
-  alias arch-contract-address="archway config | jq -r --arg chainId \$(archway config | jq -r .network.chainId) '[.developer.deployments[] | select(.type == \"instantiate\" and .chainId == \$chainId)] | .[0].address'"
 fi
 
 # Load local zshrc

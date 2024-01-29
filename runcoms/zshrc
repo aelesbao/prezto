@@ -234,6 +234,10 @@ function yadm-prezto() {
   yadm add ~/.zprezto && yadm cis -m 'build: update prezto'
 }
 
+function yadm-nvim() {
+  yadm add ~/.config/nvim && yadm cis -m 'build: update nvim'
+}
+
 function cdtmp() {
   local TMPDIR="$(mktemp -d)"
   ${SHELL} -c "cd ${TMPDIR}; ${SHELL}; rm -rf ${TMPDIR}"

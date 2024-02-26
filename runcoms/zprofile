@@ -74,6 +74,8 @@ path=(
   /opt/{homebrew,local}/{,s}bin(N)
   /usr/local/{,s}bin(N)
   $path
+  /usr/local/opt/llvm/bin
+  /usr/local/share/google-cloud-sdk/bin
   ${KREW_ROOT:-$HOME/.krew}/bin
 )
 

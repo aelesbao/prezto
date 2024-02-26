@@ -31,7 +31,12 @@ bindkey ';5C' emacs-forward-word
 #
 # Aliases
 #
-is-callable yadm && alias y='yadm'
+if is-callable yadm; then
+  alias y='yadm'
+  alias yb='yadm-boot'
+  alias yl="lazygit -g ${HOME}/.local/share/yadm/repo.git -w ${HOME}"
+fi
+
 is-callable nvim && alias vim='nvim'
 is-callable hub && alias git='hub'
 is-callable trash && alias rm='trash'

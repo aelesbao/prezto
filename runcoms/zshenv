@@ -141,6 +141,8 @@ if [[ ! -d "$TMPPREFIX" ]]; then
   mkdir -p "$TMPPREFIX"
 fi
 
+export RUST_BACKTRACE=1
+
 # No beeps
 setopt NO_BEEP
 

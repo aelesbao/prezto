@@ -43,6 +43,7 @@ is-callable trash && alias rm='trash'
 is-callable xh && alias http='xh'
 is-callable procs && alias psg='procs' || alias psg='ps aux | grep'
 is-callable delta && alias diff='delta'
+is-callable lazygit && alias lzg='lazygit'
 
 if is-callable lsd; then
   alias ls='lsd --group-dirs=first --blocks=permission,date,size,name'
@@ -248,6 +249,16 @@ function cdtmp() {
   ${SHELL} -c "cd ${TMPDIR}; ${SHELL}; rm -rf ${TMPDIR}"
 }
 
+function random() {
+  local min="$1"
+  local max="$2"
+
+  range=$((max - min + 1))
+  rand=$((min + (RANDOM % range)))
+
+  echo "$rand"
+}
+
 # Archway
 if is-callable archwayd; then
   function gas-prices-estimate() {
@@ -271,7 +282,8 @@ if is-callable archwayd; then
 
   function arch-debug-tx() {
     local txhash="${1}"
-    archwayd q tx "${txhash}" | jq '.events |= map({ type: .type, attributes: (.attributes | map(.key |= @base64d) | map(.value |= @base64d) | from_entries) })'
+    # archwayd q tx "${txhash}" | jq '.events |= map({ type: .type, attributes: (.attributes | map(.key |= @base64d) | map(.value |= @base64d) | from_entries) })'
+    archwayd q tx "${txhash}" | jq
   }
 fi
 

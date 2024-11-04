@@ -285,4 +285,12 @@ zstyle ':prezto:module:tmux:session' name 'default'
 # behavior.
 zstyle ':prezto:module:utility' safe-ops 'no'
 
+
+#
+# Rust
+#
+
+# Enables the use of sccache for the Rust compiler.
+zstyle ':prezto:module:rust' sccache 'no'
+
 # vim:ft=zsh

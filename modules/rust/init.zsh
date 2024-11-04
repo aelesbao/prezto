@@ -19,7 +19,7 @@ if [[ -d "${CARGO_HOME}" ]]; then
 fi
 
 # rustc wrapper
-if (( $+commands[sccache] )); then
+if (( $+commands[sccache] )) && zstyle -t ':prezto:module:rust' sccache; then
   export RUSTC_WRAPPER="$(which sccache)"
 fi
 

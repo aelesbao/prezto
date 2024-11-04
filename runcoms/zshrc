@@ -31,6 +31,8 @@ bindkey ';5C' emacs-forward-word
 #
 # Aliases
 #
+alias resource="source ${HOME}/.zshrc"
+
 if is-callable yadm; then
   alias y='yadm'
   alias yb='yadm-boot'
@@ -43,7 +45,8 @@ is-callable trash && alias rm='trash'
 is-callable xh && alias http='xh'
 is-callable procs && alias psg='procs' || alias psg='ps aux | grep'
 is-callable delta && alias diff='delta'
-is-callable lazygit && alias lzg='lazygit'
+is-callable lazygit && alias lz='lazygit'
+is-callable dust && alias du='dust'
 
 if is-callable lsd; then
   alias ls='lsd --group-dirs=first --blocks=permission,date,size,name'
@@ -57,8 +60,6 @@ if is-callable eza; then
   alias l='eza -1a'
   alias tree='eza --tree'
 fi
-
-alias resource="source ${HOME}/.zshrc"
 
 alias gc='git cis'
 alias ghb='git browse'

@@ -40,12 +40,12 @@ fi
 #
 
 if (( $+commands[nvim] )); then
-  export EDITOR='nvim -X'
+  export EDITOR='nvim'
 else
   export EDITOR='vim -X'
 fi
 if (( $+commands[nvim] )); then
-  export VISUAL='nvim -X'
+  export VISUAL='nvim'
 else
   export VISUAL='vim -X'
 fi

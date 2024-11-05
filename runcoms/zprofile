@@ -24,14 +24,14 @@ fi
 
 if [[ -z "$EDITOR" ]]; then
   if (( $+commands[nvim] )); then
-    export EDITOR='nvim -X'
+    export EDITOR='nvim'
   else
     export EDITOR='vim -X'
   fi
 fi
 if [[ -z "$VISUAL" ]]; then
   if (( $+commands[nvim] )); then
-    export VISUAL='nvim -X'
+    export VISUAL='nvim'
   else
     export VISUAL='vim -X'
   fi

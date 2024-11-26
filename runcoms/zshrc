@@ -102,6 +102,7 @@ if is-darwin; then
 fi
 
 if [[ -x ~/.config/tmux/plugins/tmux-ctrlp/bin/ctrlp ]]; then
+  path+=(~/.config/tmux/plugins/tmux-ctrlp/bin)
   alias t='~/.config/tmux/plugins/tmux-ctrlp/bin/ctrlp'
 fi
 

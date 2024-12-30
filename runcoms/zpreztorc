@@ -36,11 +36,13 @@ zstyle ':prezto:load' pmodule \
   'editor' \
   'history' \
   'directory' \
-  'kitty' \
   'syntax-highlighting' \
   'autosuggestions' \
+  'utility' \
   'git' \
   'osx' \
+  'homebrew' \
+  'pacman' \
   'rsync' \
   'node' \
   'rust' \
@@ -49,13 +51,12 @@ zstyle ':prezto:load' pmodule \
   'ipfs' \
   'docker' \
   'kubernetes' \
-  'utility' \
-  'completion' \
-  'history-substring-search' \
   'fasd' \
   'starship' \
   'tmux' \
-  'yabai'
+  'yabai' \
+  'completion' \
+  'history-substring-search'
 
 
 #
@@ -151,7 +152,7 @@ zstyle ':prezto:module:git:log:oneline' format '%C(bold yellow)%h%C(reset) %s %C
 #
 
 # Set the Pacman frontend.
-# zstyle ':prezto:module:pacman' frontend 'yaourt'
+zstyle ':prezto:module:pacman' frontend 'yay'
 
 #
 # Prompt

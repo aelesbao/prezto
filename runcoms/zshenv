@@ -117,11 +117,6 @@ for path_file in /etc/paths.d/*(.N); do
 done
 unset path_file
 
-# Add Homebrew completions
-if (( ${+commands[brew]} )); then
-  fpath+=("$(brew --prefix)/share/zsh/site-functions")
-fi
-
 # Customize LS_COLORS
 if (( ! $+LS_COLORS && ${+commands[vivid]} )); then
   export LS_COLORS="$(vivid generate catppuccin-mocha)"

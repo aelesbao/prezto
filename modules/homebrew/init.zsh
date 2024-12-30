@@ -21,7 +21,7 @@ fi
 # Load 'HOMEBREW_' prefixed variables only. Avoid loading 'PATH' related
 # variables as they are already handled in standard zsh configuration.
 if (( $+commands[brew] )); then
-  eval "${(@M)${(f)"$(brew shellenv 2> /dev/null)"}:#export HOMEBREW*}"
+  eval "$(brew shellenv 2> /dev/null)"
 fi
 
 #

@@ -4,6 +4,12 @@
 
 # function trash {
 
+# Check if `trash` binary is installed and use it instead of this function.
+if (( $+commands[trash] )); then
+  $commands[trash] "$@"
+  return
+fi
+
 emulate -L zsh
 setopt LOCAL_OPTIONS EXTENDED_GLOB
 

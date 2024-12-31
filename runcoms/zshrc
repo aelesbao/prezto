@@ -21,8 +21,9 @@ autoload -U +X bashcompinit && bashcompinit
 # set the options for a terminal device interface
 is-callable stty && stty -ixon
 
-# history ignores lines starting with white spaces
-setopt HIST_IGNORE_SPACE
+setopt HIST_IGNORE_SPACE     # History ignores lines starting with white spaces.
+setopt HIST_REDUCE_BLANKS    # Trim multiple insgnificant blanks.
+setopt INTERACTIVE_COMMENTS  # Enable command line comments
 
 # Use CTRL+arrows to move backward and forward words
 bindkey ';5D' emacs-backward-word

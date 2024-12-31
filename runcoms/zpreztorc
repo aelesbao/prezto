@@ -30,20 +30,20 @@ zstyle ':prezto:load' zfunction 'zargs' 'zmv'
 # Set the Prezto modules to load (browse modules).
 # The order matters.
 zstyle ':prezto:load' pmodule \
+  'utility' \
   'environment' \
   'terminal' \
-  'spectrum' \
   'editor' \
   'history' \
   'directory' \
   'syntax-highlighting' \
   'autosuggestions' \
-  'utility' \
   'git' \
   'osx' \
   'homebrew' \
   'pacman' \
   'rsync' \
+  'ansible' \
   'node' \
   'rust' \
   'java' \

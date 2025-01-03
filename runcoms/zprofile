@@ -174,18 +174,15 @@ fi
 [[ -S "$XDG_RUNTIME_DIR/docker.sock" ]] && export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/docker.sock"
 
 # Go environment
-if [[ -d "$HOME/.local/share/go" ]]; then
-  export GOPATH="$HOME/.local/share/go"
-  path+=("$GOPATH/bin")
-fi
+[[ ! -d "$HOME/.local/share/go" ]] && mkdir -p "$HOME/.local/share/go"
+export GOPATH="$HOME/.local/share/go"
+path+=("$GOPATH/bin")
 
 # Use Python 3 in Google Cloud cli
 export CLOUDSDK_PYTHON=python3
 
 # Avoid Homebrew auto-upgrade
 export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=true
-
-export ARCHWAY_SKIP_VERSION_CHECK=true
 
 [[ -f "$HOME/.zprofile.local" ]] && source "$HOME/.zprofile.local"
 # vim:ft=zsh

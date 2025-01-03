@@ -124,8 +124,9 @@ is-callable zoxide && eval "$(zoxide init zsh)"
 
 local func_path=~/.cache/prezto/site-functions
 
-if is-callable op && [[ ! -f $func_path/_op ]]; then
-  op completion zsh > $func_path/_op
+if is-callable op; then
+  [[ -f $func_path/_op ]] || op completion zsh > $func_path/_op
+  [[ -f ~/.config/op/plugins.sh ]] && source ~/.config/op/plugins.sh
 fi
 
 if is-callable colima && [[ ! -f $func_path/_colima ]]; then

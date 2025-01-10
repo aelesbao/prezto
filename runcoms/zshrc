@@ -40,14 +40,14 @@ if is-callable yadm; then
   alias yl="lazygit -g ${HOME}/.local/share/yadm/repo.git -w ${HOME}"
 fi
 
-is-callable nvim && alias vim='nvim'
-is-callable hub && alias git='hub'
-is-callable trash && alias rm='trash'
-is-callable xh && alias http='xh'
-is-callable procs && alias psg='procs' || alias psg='ps aux | grep'
+is-callable bat && alias cat='bat --decorations=never --paging=never'
 is-callable delta && alias diff='delta'
-is-callable lazygit && alias lz='lazygit'
 is-callable dust && alias du='dust'
+is-callable lazygit && alias lz='lazygit'
+is-callable nvim && alias vim='nvim'
+is-callable procs && alias psg='procs' || alias psg='ps aux | grep'
+is-callable trash && alias rm='trash'
+is-callable yazi && alias yz='yazi'
 
 if is-callable lsd; then
   alias ls='lsd --group-dirs=first --blocks=permission,date,size,name'
@@ -62,11 +62,11 @@ if is-callable eza; then
   alias tree='eza --tree'
 fi
 
+alias cdgr='cd $(git-root)'
 alias gc='git cis'
 alias ghb='git browse'
 alias gr='git rebase'
 alias gri='git rebase --interactive'
-alias cdgr='cd $(git-root)'
 
 alias dc='docker compose'
 
@@ -110,8 +110,6 @@ fi
 #
 # Hooks and Completions
 #
-
-#add-zsh-hook -Uz chpwd(){ source <(tea -Eds) }  #tea
 
 # direnv
 is-callable direnv && eval "$(direnv hook zsh)"
@@ -253,7 +251,7 @@ if is-callable archwayd; then
     }
 
     ln -sf client.${chain_id}.toml ~/.archway/config/client.toml
-    bat ~/.archway/config/client.toml
+    cat ~/.archway/config/client.toml
   }
 fi
 

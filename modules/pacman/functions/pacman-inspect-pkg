@@ -1,0 +1,28 @@
+# vim:ft=zsh
+#
+# Lists Pacman disowned files.
+#
+# Authors:
+#   Augusto Elesbão <aelesbao@users.noreply.github.com>
+#
+
+# function pacman-inspect-pkg {
+
+if ! is-callable yay; then
+  echo "required package manager not found"
+  return 1
+fi
+
+function render-pkgbuild {
+  if is-callable bat; then
+    bat --decorations=never --paging=never -l pkgbuild
+  else
+    cat
+  fi
+}
+
+local pkg="$1"
+
+yay -Gp "$pkg" | render-pkgbuild
+
+# }

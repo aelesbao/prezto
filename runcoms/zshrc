@@ -115,7 +115,10 @@ fi
 is-callable direnv && eval "$(direnv hook zsh)"
 
 # FZF - Shell Fuzzy Finder
-[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
+if is-callable fzf; then
+  [[ ! -f ~/.fzf.zsh ]] && fzf --zsh > ~/.fzf.zsh
+  source ~/.fzf.zsh
+fi
 
 # Load zoxide
 is-callable zoxide && eval "$(zoxide init zsh)"

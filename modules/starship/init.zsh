@@ -11,6 +11,10 @@ if [[ "$TERM" == 'dumb' ]] || ! is-callable starship; then
   return 1
 fi
 
+if (( ! $+commands[starship] )); then
+  return 1
+fi
+
 # find out which distribution we are running on
 LFILE="/etc/*-release"
 MFILE="/System/Library/CoreServices/SystemVersion.plist"

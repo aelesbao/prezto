@@ -118,9 +118,9 @@ fi
 export PAGER='less'
 
 # Customize LS_COLORS
-if (( ! $+LS_COLORS && ${+commands[vivid]} )); then
-  export LS_COLORS="$(vivid generate catppuccin-mocha)"
-fi
+# if (( ! $+LS_COLORS && ${+commands[vivid]} )); then
+#   export LS_COLORS="$(vivid generate catppuccin-mocha)"
+# fi
 
 #
 # Temporary Files

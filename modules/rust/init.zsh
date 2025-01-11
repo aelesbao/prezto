@@ -14,8 +14,8 @@ export RUSTUP_HOME="${RUSTUP_HOME:-${HOME}/.rustup}"
 export CARGO_HOME="${CARGO_HOME:-${HOME}/.cargo}"
 
 # Add Cargo binaries to path
-if [[ -d "${CARGO_HOME}" ]]; then
-  path+=("${CARGO_HOME}/bin")
+if [[ -f "${CARGO_HOME}/env" ]]; then
+  source ${CARGO_HOME}/env
 fi
 
 # rustc wrapper

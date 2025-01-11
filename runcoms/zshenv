@@ -36,22 +36,6 @@ elif [[ "$OSTYPE" == linux* ]]; then
 fi
 
 #
-# Editors
-#
-
-if (( $+commands[nvim] )); then
-  export EDITOR='nvim'
-else
-  export EDITOR='vim -X'
-fi
-if (( $+commands[nvim] )); then
-  export VISUAL='nvim'
-else
-  export VISUAL='vim -X'
-fi
-export PAGER='less'
-
-#
 # Language
 #
 
@@ -116,6 +100,22 @@ for path_file in /etc/paths.d/*(.N); do
   path+=($(<$path_file))
 done
 unset path_file
+
+#
+# Editors
+#
+
+if (( $+commands[nvim] )); then
+  export EDITOR='nvim'
+else
+  export EDITOR='vim -X'
+fi
+if (( $+commands[nvim] )); then
+  export VISUAL='nvim'
+else
+  export VISUAL='vim -X'
+fi
+export PAGER='less'
 
 # Customize LS_COLORS
 if (( ! $+LS_COLORS && ${+commands[vivid]} )); then

@@ -26,6 +26,7 @@ path=(
   /usr/local/{,s}bin(N)
   $path
   /usr/local/opt/llvm/bin
+  /usr/local/opt/rustup/bin
   /usr/local/share/google-cloud-sdk/bin
   $HOME/.local/share/JetBrains/Toolbox/scripts
   ${KREW_ROOT:-$HOME/.krew}/bin

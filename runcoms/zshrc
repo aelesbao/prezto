@@ -70,6 +70,11 @@ alias gri='git rebase --interactive'
 
 alias dc='docker compose'
 
+if is-callable sccache; then
+  is-callable gcc && alias gcc="sccache ${commands[gcc]}"
+  is-callable clang && alias clang="sccache ${commands[clang]}"
+fi
+
 is-callable terragrunt && alias tf="terragrunt" || alias tf="terraform"
 is-callable subkey || alias subkey="docker run --name subkey --rm -it parity/subkey"
 

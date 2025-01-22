@@ -169,6 +169,10 @@ if (( $+commands[lazygit] )); then
   export LG_CONFIG_FILE="${config_dir}/config.yml,${config_dir}/theme.yml"
 fi
 
+if (( $+commands[sccache] )); then
+  export SCCACHE_DIRECT=true
+fi
+
 # pyenv
 [[ -d /usr/local/var/pyenv ]] && export PYENV_ROOT=/usr/local/var/pyenv
 [[ -d "$HOME/.pyenv" ]] && export PYENV_ROOT="$HOME/.pyenv"

@@ -306,6 +306,6 @@ zstyle ':prezto:module:utility' safe-ops 'no'
 #
 
 # Enables the use of sccache for the Rust compiler.
-zstyle ':prezto:module:rust' sccache 'no'
+zstyle ':prezto:module:rust' sccache 'yes'
 
 # vim:ft=zsh

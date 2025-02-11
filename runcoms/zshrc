@@ -16,8 +16,6 @@ fi
 # Customize to your needs...
 #
 
-autoload -U +X bashcompinit && bashcompinit
-
 # set the options for a terminal device interface
 is-callable stty && stty -ixon
 
@@ -125,19 +123,34 @@ fi
 # Load zoxide
 is-callable zoxide && eval "$(zoxide init zsh)"
 
-local func_path=~/.cache/prezto/site-functions
-
 if is-callable op; then
-  [[ -f $func_path/_op ]] || op completion zsh > $func_path/_op
+  [[ -f $site_functions_path/_op ]] || op completion zsh > $site_functions_path/_op
   [[ -f ~/.config/op/plugins.sh ]] && source ~/.config/op/plugins.sh
 fi
 
-if is-callable colima && [[ ! -f $func_path/_colima ]]; then
-  colima completion zsh > $func_path/_colima
+if is-callable colima && [[ ! -f $site_functions_path/_colima ]]; then
+  colima completion zsh > $site_functions_path/_colima
 fi
 
-if is-callable poetry && [[ ! -f $func_path/_poetry ]]; then
-  poetry completions zsh > $func_path/_poetry
+if is-callable poetry && [[ ! -f $site_functions_path/_poetry ]]; then
+  poetry completions zsh > $site_functions_path/_poetry
+fi
+
+if is-callable comfy && [[ ! -f $site_functions_path/_comfy ]]; then
+  comfy --show-completion > $site_functions_path/_comfy
+fi
+
+if is-callable pipx && is-callable register-python-argcomplete && [[ ! -f $site_functions_path/_pipx ]]; then
+  register-python-argcomplete pipx > $site_functions_path/_pipx
+fi
+
+if is-callable just && [[ ! -f $site_functions_path/_just ]]; then
+  just --completions zsh > $site_functions_path/_just
+fi
+
+if is-callable brew && [[ ! -f $site_functions_path/_brew ]]; then
+  ln -s $(brew --prefix)/Library/Contributions/brew_zsh_completion.zsh \
+    $site_functions_path/_brew
 fi
 
 # DigitalOcean CLI
@@ -164,6 +177,9 @@ if is-callable gcloud; then
   }
 fi
 
+# Load bash completions
+autoload -U +X bashcompinit && bashcompinit
+
 # Initialize 1Ppassword CLI plugins
 [[ -f ~/.config/op/plugins.sh ]] && source ~/.config/op/plugins.sh
 
@@ -178,21 +194,15 @@ function nvm-enable {
   [[ -d $nvm_prefix ]] && source $nvm_prefix/nvm.sh
 }
 
-# Installs completions that were not auto installed
-function install-completions {
-  [ -f $site_functions_path/_brew ] || \
-    ln -s $(brew --prefix)/Library/Contributions/brew_zsh_completion.zsh \
-          $site_functions_path/_brew
-
-  # TODO: install Docker completions from Homebrew packages
-  if [ -d /Applications/Docker.app/Contents/Resources/etc ]; then
-    docker_functions=(docker docker-compose docker-machine)
-    for fn in $docker_functions; do
-      ln -s /Applications/Docker.app/Contents/Resources/etc/$fn.zsh-completion $site_functions_path/_$fn
-    done
+# Compile the completion dump to increase startup speed.
+function compile-completions {
+  zcompdump="${XDG_CACHE_HOME:-$HOME/.cache}/prezto/zcompdump"
+  if [[ -s "$zcompdump" && (! -s "${zcompdump}.zwc" || "$zcompdump" -nt "${zcompdump}.zwc") ]]; then
+    if command mkdir "${zcompdump}.zwc.lock" 2>/dev/null; then
+      zcompile "$zcompdump"
+      command rmdir  "${zcompdump}.zwc.lock" 2>/dev/null
+    fi
   fi
-
-  zcompile "${ZDOTDIR:-$HOME}/.zcompdump"
 }
 
 function update-system-env {

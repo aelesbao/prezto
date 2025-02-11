@@ -182,7 +182,7 @@ fi
 [[ -d /usr/local/heroku/bin ]] && path+=("/usr/local/heroku/bin")
 
 # Docker Rootless mode
-[[ -S "$XDG_RUNTIME_DIR/docker.sock" ]] && export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/docker.sock"
+# [[ -S "$XDG_RUNTIME_DIR/docker.sock" ]] && export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/docker.sock"
 
 # Go environment
 [[ ! -d "$HOME/.local/share/go" ]] && mkdir -p "$HOME/.local/share/go"

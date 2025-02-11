@@ -171,6 +171,7 @@ fi
 
 if (( $+commands[sccache] )); then
   export SCCACHE_DIRECT=true
+  export SCCACHE_ERROR_LOG=${TMPDIR:-/tmp}/sccache.log
 fi
 
 # pyenv

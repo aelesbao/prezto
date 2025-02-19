@@ -117,7 +117,7 @@ is-callable direnv && eval "$(direnv hook zsh)"
 
 # FZF - Shell Fuzzy Finder
 if is-callable fzf; then
-  [[ ! -f ~/.fzf.zsh ]] && fzf --zsh > ~/.fzf.zsh
+  [[ ! -f ~/.fzf.zsh ]] && fzf --zsh >! ~/.fzf.zsh
   source ~/.fzf.zsh
 fi
 
@@ -125,32 +125,32 @@ fi
 is-callable zoxide && eval "$(zoxide init zsh)"
 
 if is-callable op; then
-  [[ -f $site_functions_path/_op ]] || op completion zsh > $site_functions_path/_op
+  [[ -f $site_functions_path/_op ]] || op completion zsh >! $site_functions_path/_op
   [[ -f ~/.config/op/plugins.sh ]] && source ~/.config/op/plugins.sh
 fi
 
 if is-callable colima && [[ ! -f $site_functions_path/_colima ]]; then
-  colima completion zsh > $site_functions_path/_colima
+  colima completion zsh >! $site_functions_path/_colima
 fi
 
 if is-callable poetry && [[ ! -f $site_functions_path/_poetry ]]; then
-  poetry completions zsh > $site_functions_path/_poetry
+  poetry completions zsh >! $site_functions_path/_poetry
 fi
 
 if is-callable comfy && [[ ! -f $site_functions_path/_comfy ]]; then
-  comfy --show-completion > $site_functions_path/_comfy
+  comfy --show-completion >! $site_functions_path/_comfy
 fi
 
 if is-callable pipx && is-callable register-python-argcomplete && [[ ! -f $site_functions_path/_pipx ]]; then
-  register-python-argcomplete pipx > $site_functions_path/_pipx
+  register-python-argcomplete pipx >! $site_functions_path/_pipx
 fi
 
 if is-callable just && [[ ! -f $site_functions_path/_just ]]; then
-  just --completions zsh > $site_functions_path/_just
+  just --completions zsh >! $site_functions_path/_just
 fi
 
 if is-callable brew && [[ ! -f $site_functions_path/_brew ]]; then
-  ln -s $(brew --prefix)/Library/Contributions/brew_zsh_completion.zsh \
+  ln -sf $(brew --prefix)/Library/Contributions/brew_zsh_completion.zsh \
     $site_functions_path/_brew
 fi
 

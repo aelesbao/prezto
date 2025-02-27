@@ -194,6 +194,7 @@ export CLOUDSDK_PYTHON=python3
 
 # Avoid Homebrew auto-upgrade
 export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=true
+export HOMEBREW_NO_ENV_HINTS=true
 
 [[ -f "$HOME/.zprofile.local" ]] && source "$HOME/.zprofile.local"
 # vim:ft=zsh

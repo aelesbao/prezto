@@ -280,16 +280,16 @@ zstyle ':prezto:module:terminal:multiplexer-title' format '%1~'
 zstyle ':prezto:module:tmux:auto-start' local 'no'
 
 # Auto start a session when Zsh is launched in a SSH connection.
-zstyle ':prezto:module:tmux:auto-start' remote 'yes'
+zstyle ':prezto:module:tmux:auto-start' remote 'no'
 
 # Enable powerline.
 zstyle ':prezto:module:tmux' powerline 'no'
 
 # Integrate with iTerm2.
-zstyle ':prezto:module:tmux:iterm' integrate 'yes'
+zstyle ':prezto:module:tmux:iterm' integrate 'no'
 
 # Set the default session name:
-zstyle ':prezto:module:tmux:session' name 'default'
+zstyle ':prezto:module:tmux:session' name 'dotfiles'
 
 #
 # Utility

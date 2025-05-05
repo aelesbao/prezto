@@ -6,7 +6,7 @@
 #   Augusto Elesbão <aelesbao@users.noreply.github.com>
 #
 
-# function pacman-inspect-pkg {
+# function yay-inspect-pkg {
 
 if ! is-callable yay; then
   echo "required package manager not found"

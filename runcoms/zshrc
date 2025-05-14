@@ -149,6 +149,10 @@ if is-callable just && [[ ! -f $site_functions_path/_just ]]; then
   just --completions zsh >! $site_functions_path/_just
 fi
 
+if is-callable walrus && [[ ! -f $site_functions_path/_walrus ]]; then
+  walrus completion --shell zsh >! $site_functions_path/_walrus
+fi
+
 if is-callable brew && [[ ! -f $site_functions_path/_brew ]]; then
   ln -sf $(brew --prefix)/Library/Contributions/brew_zsh_completion.zsh \
     $site_functions_path/_brew

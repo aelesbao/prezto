@@ -196,5 +196,10 @@ export CLOUDSDK_PYTHON=python3
 export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=true
 export HOMEBREW_NO_ENV_HINTS=true
 
+# Disable telemetry
+export HOMEBREW_NO_ANALYTICS=1
+export DISABLE_TELEMETRY=1
+export GOTELEMETRY=off
+
 [[ -f "$HOME/.zprofile.local" ]] && source "$HOME/.zprofile.local"
 # vim:ft=zsh

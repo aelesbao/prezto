@@ -50,8 +50,6 @@ zstyle ':prezto:load' pmodule \
   'python' \
   'ipfs' \
   'docker' \
-  'kubernetes' \
-  'fasd' \
   'starship' \
   'tmux' \
   'yabai' \

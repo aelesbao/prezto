@@ -202,4 +202,5 @@ export DISABLE_TELEMETRY=1
 export GOTELEMETRY=off
 
 [[ -f "$HOME/.zprofile.local" ]] && source "$HOME/.zprofile.local"
+
 # vim:ft=zsh

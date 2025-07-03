@@ -201,6 +201,12 @@ export HOMEBREW_NO_ANALYTICS=1
 export DISABLE_TELEMETRY=1
 export GOTELEMETRY=off
 
+# Use clang system-wide
+export CC="clang"
+export CXX="clang++"
+export CXXFLAGS="$CXXFLAGS -stdlib=libc++"
+export LDFLAGS="$LDFLAGS -fuse-ld=lld"
+
 [[ -f "$HOME/.zprofile.local" ]] && source "$HOME/.zprofile.local"
 
 # vim:ft=zsh

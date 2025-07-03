@@ -138,6 +138,12 @@ fi
 
 export RUST_BACKTRACE=1
 
+# Use clang system-wide
+export CC="clang"
+export CXX="clang++"
+export CXXFLAGS="$CXXFLAGS -stdlib=libc++"
+export LDFLAGS="$LDFLAGS -fuse-ld=lld"
+
 # No beeps
 setopt NO_BEEP
 

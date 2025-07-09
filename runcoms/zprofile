@@ -151,7 +151,7 @@ if [[ $+commands[fzf] ]]; then
     --preview 'echo {2} | bat -l zsh --color=always --decorations=never'
     --preview-window up:3:wrap
     --bind 'ctrl-/:toggle-preview'
-    --bind 'ctrl-y:execute-silent(echo -n {2..} | (pbcopy || wl-copy))+abort'
+    --bind 'ctrl-y:execute-silent(echo -n {2..} | clipc)+abort'
     --header 'Press CTRL-Y to copy command into clipboard'
     --height '100%'"
 fi

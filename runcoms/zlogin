@@ -7,8 +7,8 @@
 
 # Execute code that does not affect the current session in the background.
 {
-  [[ $+commands[compile-completions] ]] && compile-completions || true
-  [[ "$OSTYPE" == darwin* ]] && [[ $+commands[update-system-env] ]] && update-system-env || true
+  (( $+commands[compile-completions] )) && $commands[compile-completions] || true
+  [[ "$OSTYPE" == darwin* ]] && (( $+commands[update-system-env] )) && update-system-env || true
 } &!
 
 if [[ "$PROFILE_STARTUP" == true ]]; then

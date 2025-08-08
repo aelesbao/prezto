@@ -47,7 +47,6 @@ zstyle ':prezto:load' pmodule \
   'node' \
   'rust' \
   'java' \
-  'python' \
   'ipfs' \
   'docker' \
   'starship' \

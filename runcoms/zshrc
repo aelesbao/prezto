@@ -133,6 +133,7 @@ typeset -A compl_commands=(
   op                          'op completion zsh'
   poetry                      'poetry completions zsh'
   register-python-argcomplete 'register-python-argcomplete pipx'
+  sk                          'sk --shell zsh'
   walrus                      'walrus completion --shell zsh'
 )
 

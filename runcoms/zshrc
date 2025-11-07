@@ -37,6 +37,8 @@ bindkey ';5C' emacs-forward-word
 #
 alias resource="source ${HOME}/.zshrc"
 
+alias systemctl='noglob systemctl'
+
 if is-callable yadm; then
   [[ -x ~/.config/yadm/bootstrap ]] && alias yadm-boot='~/.config/yadm/bootstrap'
 

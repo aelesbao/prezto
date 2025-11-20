@@ -265,6 +265,13 @@ if is-callable archwayd; then
   }
 fi
 
+# Sui
+if is-callable sui; then
+  function sui-address() {
+    sui client addresses --json 2>/dev/null | jq --arg addr "$1" -er '.addresses[] | select(.[0] == $addr) | .[1]'
+  }
+fi
+
 # Load local zshrc
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
 

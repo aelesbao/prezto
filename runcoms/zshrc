@@ -122,45 +122,47 @@ fi
 # Hooks and Completions
 #
 
-mkdir -p "$site_functions_path"
+function cache-completions {
+  [[ -d "$site_functions_path" ]] || mkdir -p "$site_functions_path"
 
-# Completion caching
-typeset -A compl_commands=(
-  colima                      'colima completion zsh'
-  comfy                       'comfy --show-completion'
-  doctl                       'doctl completion zsh'
-  eww                         'eww shell-completions --shell zsh'
-  just                        'just --completions zsh'
-  kubectl                     'kubectl completion zsh'
-  op                          'op completion zsh'
-  poetry                      'poetry completions zsh'
-  register-python-argcomplete 'register-python-argcomplete pipx'
-  sk                          'sk --shell zsh'
-  walrus                      'walrus completion --shell zsh'
-)
+  # Completion caching
+  typeset -A compl_commands=(
+    colima                      'colima completion zsh'
+    comfy                       'comfy --show-completion'
+    doctl                       'doctl completion zsh'
+    eww                         'eww shell-completions --shell zsh'
+    just                        'just --completions zsh'
+    kubectl                     'kubectl completion zsh'
+    op                          'op completion zsh'
+    hf                          'hf --show-completion'
+    poetry                      'poetry completions zsh'
+    register-python-argcomplete 'register-python-argcomplete pipx'
+    sk                          'sk --shell zsh'
+    walrus                      'walrus completion --shell zsh'
+  )
 
-for compl_command in "${(k)compl_commands[@]}"; do
-  if (( $+commands[$compl_command] )); then
-    function_file="$site_functions_path/_$compl_command"
+  for compl_command in "${(k)compl_commands[@]}"; do
+    if (( $+commands[$compl_command] )); then
+      function_file="$site_functions_path/_$compl_command"
 
-    # Completion commands are slow; check if the command is included
-    # in the functions array. Otherwise, check if the command is newer
-    # than the function file.
-    if [[ -z ${(k)functions[(Ie)_${compl_command}]} \
-          && "${commands[$compl_command]}" -nt "$function_file" \
-          && -s "$function_file" ]]; then
-      echo "Generating completion for $compl_command..."
-      command ${=compl_commands[$compl_command]} >! "$function_file" 2> /dev/null
+      # Completion commands are slow; check if the command is included
+      # in the functions array.
+      if [[ -z "${(k)functions[(Ie)_${compl_command}]}" ]]; then
+        echo "Generating completion for $compl_command..."
+        command ${=compl_commands[$compl_command]} >! "$function_file" 2> /dev/null
+      fi
+
+      unset function_file
     fi
+  done
 
-    unset function_file
-  fi
-done
+  unset compl_command{s,}
 
-unset compl_command{s,}
+  # Load bash completions
+  autoload -U +X bashcompinit && bashcompinit
+}
 
-# Load bash completions
-autoload -U +X bashcompinit && bashcompinit
+cache-completions
 
 # direnv
 is-callable direnv && eval "$(direnv hook zsh)"
@@ -188,19 +190,9 @@ function nvm-enable {
   [[ -d $nvm_prefix ]] && source $nvm_prefix/nvm.sh
 }
 
-# Compile the completion dump to increase startup speed.
-function compile-completions {
-  zcompdump="${PREZTO_CACHE_DIR}/zcompdump"
-  if [[ -s "$zcompdump" && (! -s "${zcompdump}.zwc" || "$zcompdump" -nt "${zcompdump}.zwc") ]]; then
-    if command mkdir "${zcompdump}.zwc.lock" 2>/dev/null; then
-      zcompile "$zcompdump"
-      command rmdir  "${zcompdump}.zwc.lock" 2>/dev/null
-    fi
-  fi
-  autoload -Uz compinit; compinit
-}
-
 function update-system-env {
+  [[ "$OSTYPE" == darwin* ]] || return
+
   launchctl setenv PATH "${PATH}"
 
   for var in $(env | grep _HOME | awk -F= '{print $1}'); do
@@ -276,3 +268,7 @@ fi
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
 
 # vim:ft=zsh
+
+fpath+=~/.zfunc; autoload -Uz compinit; compinit
+
+zstyle ':completion:*' menu select

@@ -29,11 +29,11 @@ fi
 # Browser
 #
 
-if [[ "$OSTYPE" == darwin* ]]; then
-  export BROWSER='open'
-elif [[ "$OSTYPE" == linux* ]]; then
-  export BROWSER='xdg-open'
-fi
+# if [[ "$OSTYPE" == darwin* ]]; then
+#   export BROWSER='open'
+# elif [[ "$OSTYPE" == linux* ]]; then
+#   export BROWSER='xdg-open'
+# fi
 
 #
 # Language

@@ -164,7 +164,7 @@ zstyle ':prezto:module:git:log:oneline' format '%C(bold yellow)%h%C(reset) %s %C
 #
 
 # Set the Pacman frontend.
-zstyle ':prezto:module:pacman' frontend 'yay'
+zstyle ':prezto:module:pacman' frontend 'paru'
 
 #
 # Prompt

@@ -123,6 +123,8 @@ fi
 #
 
 function cache-completions {
+  local force="${1:-false}"
+
   [[ -d "$site_functions_path" ]] || mkdir -p "$site_functions_path"
 
   # Completion caching
@@ -131,10 +133,12 @@ function cache-completions {
     comfy                       'comfy --show-completion'
     doctl                       'doctl completion zsh'
     eww                         'eww shell-completions --shell zsh'
+    hf                          'hf --show-completion'
     just                        'just --completions zsh'
     kubectl                     'kubectl completion zsh'
+    nexus                       'nexus completion zsh'
     op                          'op completion zsh'
-    hf                          'hf --show-completion'
+    opencode                    'opencode completion'
     poetry                      'poetry completions zsh'
     register-python-argcomplete 'register-python-argcomplete pipx'
     sk                          'sk --shell zsh'
@@ -147,7 +151,7 @@ function cache-completions {
 
       # Completion commands are slow; check if the command is included
       # in the functions array.
-      if [[ -z "${(k)functions[(Ie)_${compl_command}]}" ]]; then
+      if [[ -z "${(k)functions[(Ie)_${compl_command}]}" ]] || [[ "$force" == true ]]; then
         echo "Generating completion for $compl_command..."
         command ${=compl_commands[$compl_command]} >! "$function_file" 2> /dev/null
       fi
@@ -268,7 +272,3 @@ fi
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
 
 # vim:ft=zsh
-
-fpath+=~/.zfunc; autoload -Uz compinit; compinit
-
-zstyle ':completion:*' menu select

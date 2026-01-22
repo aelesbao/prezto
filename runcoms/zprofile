@@ -37,13 +37,13 @@ path=(
 # Browser
 #
 
-# if [[ -z "$BROWSER" ]]; then
-#   if [[ "$OSTYPE" == darwin* ]]; then
-#     export BROWSER='open'
-#   elif [[ "$OSTYPE" == linux* ]]; then
-#     export BROWSER='xdg-open'
-#   fi
-# fi
+if [[ -z "$BROWSER" ]]; then
+  if [[ "$OSTYPE" == darwin* ]]; then
+    export BROWSER='open'
+  elif [[ "$OSTYPE" == linux* ]]; then
+    export BROWSER='xdg-open'
+  fi
+fi
 
 #
 # Editors

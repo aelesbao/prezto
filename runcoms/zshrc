@@ -138,6 +138,7 @@ function cache-completions {
     kubectl                     'kubectl completion zsh'
     nexus                       'nexus completion zsh'
     op                          'op completion zsh'
+    openclaw                    'openclaw completion --shell zsh'
     opencode                    'opencode completion'
     poetry                      'poetry completions zsh'
     register-python-argcomplete 'register-python-argcomplete pipx'

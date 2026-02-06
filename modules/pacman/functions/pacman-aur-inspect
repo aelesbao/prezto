@@ -1,0 +1,37 @@
+# vim:ft=zsh
+#
+# Inspects the PKGBUILD of a package from the AUR.
+#
+# Authors:
+#   Augusto Elesbão <aelesbao@users.noreply.github.com>
+#
+
+# function pacman-aur-inspect {
+
+function render-pkgbuild {
+  if is-callable bat; then
+    bat --decorations=never --paging=never -l pkgbuild
+  else
+    cat
+  fi
+}
+
+local _pkg_manager _pkg="$1"
+
+if [[ -z "$_pkg" ]]; then
+  echo "usage: $0 <package>"
+  return 1
+fi
+
+if (( ${+commands[yay]} )); then
+  _pkg_manager="yay"
+elif (( ${+commands[paru]} )); then
+  _pkg_manager="paru"
+else
+  echo "required package manager not found"
+  return 1
+fi
+
+$_pkg_manager -Gp "$_pkg" | render-pkgbuild
+
+# }

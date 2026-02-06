@@ -129,6 +129,7 @@ function cache-completions {
 
   # Completion caching
   typeset -A compl_commands=(
+    codex                       'codex completion zsh'
     colima                      'colima completion zsh'
     comfy                       'comfy --show-completion'
     doctl                       'doctl completion zsh'

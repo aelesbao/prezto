@@ -12,10 +12,10 @@ fi
 
 # Aliases
 alias ans='ansible'
-alias anp='ansible-playbook'
-alias and='ansible-doc'
-alias ang='ansible-galaxy'
+alias ansp='ansible-playbook'
+alias ansd='ansible-doc'
+alias ansg='ansible-galaxy'
 
 if is-callable ansible-lint; then
-  alias anl='ansible-lint'
+  alias ansl='ansible-lint'
 fi

@@ -76,6 +76,7 @@ alias ghb='git browse'
 alias gr='git rebase'
 alias gri='git rebase --interactive'
 
+alias dk='docker'
 alias dc='docker compose'
 
 # if is-callable sccache; then
@@ -239,6 +240,18 @@ function random() {
   rand=$((min + (RANDOM % range)))
 
   echo "$rand"
+}
+
+# Cleans stopped containers, dangling images, and dettached volumes
+function dkclean {
+  docker ps -a --quiet \
+    -f 'status=created' \
+    -f 'status=removing' \
+    -f 'status=paused' \
+    -f 'status=exited' \
+    | xargs -I {} docker rm {}
+  docker images | grep '<none>' | awk '{print $3}' | xargs docker rmi
+  docker volume prune
 }
 
 # Archway

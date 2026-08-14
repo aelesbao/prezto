@@ -43,7 +43,6 @@ zstyle ':prezto:load' pmodule \
   'homebrew' \
   'pacman' \
   'rsync' \
-  'ansible' \
   'node' \
   'rust' \
   'starship' \

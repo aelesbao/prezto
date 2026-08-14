@@ -48,8 +48,14 @@ if grep '^enable-ssh-support' "$_gpg_agent_conf" &> /dev/null; then
   pmodload 'ssh'
 
   # Updates the GPG-Agent TTY before every command since SSH does not set it.
+  # Card access is serialized, so this round-trip can stall the next command while gpg-agent
+  # is busy with a smartcard; only talk to the agent when the TTY has actually changed.
+  typeset -g _gpg_agent_tty=''
   function _gpg-agent-update-tty {
-    gpg-connect-agent UPDATESTARTUPTTY /bye >/dev/null
+    [[ "$TTY" == "$_gpg_agent_tty" ]] && return 0
+    _gpg_agent_tty="$TTY"
+    export GPG_TTY="$TTY"
+    gpg-connect-agent UPDATESTARTUPTTY /bye >/dev/null 2>&1
   }
   add-zsh-hook preexec _gpg-agent-update-tty
 fi
